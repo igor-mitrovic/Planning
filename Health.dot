@@ -1,5 +1,13 @@
 digraph Health{
-    //Health Node
-    Health [shape=Msquare color=green];
+    //Reversing the edges for proper display
+    rankdir=BT
+    //Root Health node
+    Health [shape=Msquare color=green fontcolor=green];
+    Health [root="True"]
 
+    "HPV prevention" [shape=box]  
+    "Get HPV vaccine" [shape=box]
+
+    "HPV prevention" -> Health
+    "Get HPV vaccine" -> "HPV prevention"
 }
