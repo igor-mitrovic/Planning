@@ -1,13 +1,21 @@
-digraph Health{
-    //Reversing the edges for proper display
+digraph Health {
     rankdir=BT
-    //Root Health node
+
+    // Health root node (outside cluster)
     Health [shape=Msquare color=green fontcolor=green];
-    Health [root="True"]
+    Health [root="true"]
 
-    "HPV prevention" [shape=box]  
-    "Get HPV vaccine" [shape=box]
+    // Cluster for HPV-related actions
+    subgraph cluster_hpv {
+        label="HPV Prevention Effort"
+        labelloc="b"
+        style=square
+        color=gray
+        "HPV prevention" [shape=box]
+        "Get HPV vaccine" [shape=box]
+        "Get HPV vaccine" -> "HPV prevention"
+    }
 
+    // Edge connecting cluster to Health
     "HPV prevention" -> Health
-    "Get HPV vaccine" -> "HPV prevention"
 }
