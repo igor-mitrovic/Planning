@@ -6,16 +6,43 @@ digraph Health {
     Health [root="true"]
 
     // Cluster for HPV-related actions
-    subgraph cluster_hpv {
+    subgraph cluster_hpv_effort {
         label="HPV Prevention Effort"
-        labelloc="b"
-        style=square
+        labeljust="c"
+        style="filled"
         color=gray
+        fillcolor="#f0f0f0"
         "HPV prevention" [shape=box]
         "Get HPV vaccine" [shape=box]
         "Get HPV vaccine" -> "HPV prevention"
+        "HPV prevention"
     }
 
+    subgraph cluster_physical_health_effort {
+        label="Physical Health Effort"
+        labeljust="c"
+        style="filled"
+
+        "Enrol in a Gym"
+        "Achieve 15% Body Fat"
+        "Achieve Muscular Body"
+        "Enrol in a Gym" -> "Achieve 15% Body Fat"
+        "Achieve 15% Body Fat" -> "Achieve Aesthetic Body"
+        "Achieve Muscular Body" -> "Achieve Aesthetic Body"
+        "Enrol in a Gym" -> "Achieve Muscular Body"
+
+        subgraph cluster_chemods{
+                label="Chemical Modifiers"
+                labeljust="c"
+                style="filled"
+                color="white"
+
+                chemmod1 [label="Create Suplement Stack"]
+        }
+        chemmod1->"Achieve Muscular Body"
+    }
     // Edge connecting cluster to Health
     "HPV prevention" -> Health
+    "Achieve Aesthetic Body" -> Health
+
 }
