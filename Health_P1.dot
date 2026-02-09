@@ -23,9 +23,9 @@ digraph Health {
         labeljust="c"
         style="filled"
 
-        "Enrol in a Gym"
-        "Achieve 15% Body Fat"
-        "Achieve Muscular Body"
+        "Enrol in a Gym" [shape=box]
+        "Achieve 15% Body Fat" [shape=box]
+        "Achieve Muscular Body" [shape=box]
         "Enrol in a Gym" -> "Achieve 15% Body Fat"
         "Achieve 15% Body Fat" -> "Achieve Aesthetic Body"
         "Achieve Muscular Body" -> "Achieve Aesthetic Body"
@@ -37,9 +37,9 @@ digraph Health {
                 style="filled"
                 color="white"
 
-                chemmod1 [label="Create Suplement Stack"]
+                chemmod1 [label="Create Suplement Stack"]  [shape=box]
         }
-        chemmod1->"Achieve Muscular Body"
+        chemmod1->"Achieve Muscular Body","Achieve 15% Body Fat"
     }
     // Edge connecting cluster to Health
     "HPV prevention" -> Health
