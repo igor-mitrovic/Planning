@@ -39,7 +39,8 @@ digraph Health {
 
                 chemmod1 [label="Create Suplement Stack"]  [shape=box]
         }
-        chemmod1->"Achieve Muscular Body","Achieve 15% Body Fat"
+        chemmod1-> "Achieve Muscular Body" [label="Create Bulking Stack"]
+        chemmod1-> "Achieve 15% Body Fat" [label="Create Fattloss Stack"]
     }
     // Edge connecting cluster to Health
     "HPV prevention" -> Health
