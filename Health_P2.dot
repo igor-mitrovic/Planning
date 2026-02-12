@@ -1,3 +1,19 @@
 digraph Health{
-    
+    rankdir=BT //Organise root node in desirable orientation
+
+    // Health root node (outside cluster)
+    Health [shape=Msquare color=green fontcolor=green];
+    Health [root="true"]
+
+    subgraph cluster_HPV_Effort{
+        label="HPV Prevention Effort"
+        labeljust="c"
+        style="filled"
+        color=gray
+        fillcolor="#f0f0f0"
+
+        HPVPreventionNode1 [label = "Find HPV Vaccination Site"] [shape=box]
+        
+    }
+
 }
