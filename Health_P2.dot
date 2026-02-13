@@ -6,14 +6,18 @@ digraph Health{
     Health [root="true"]
 
     subgraph cluster_HPV_Effort{
-        label="HPV Prevention Effort"
+        label="HPV  Effort"
         labeljust="c"
         style="filled"
         color=gray
         fillcolor="#f0f0f0"
 
-        HPVPreventionNode1 [label = "Find HPV Vaccination Site"] [shape=box]
-        
+        HPVStartNode [label = "Access HPV\nVaccine"] [shape=box]
+        HPVNode2 [label = "First Dosage\nAdministered"] [shape=box]
+        HPVNode3 [label = "Second Dosage\nAdministered"] [shape=box]
+        HPVTerminalNode [label="HPV Risk\nReduction"] [shape=doublecircle]
+        HPVStartNode->HPVNode2->HPVNode3->HPVTerminalNode
     }
 
+    HPVTerminalNode ->Health
 }
