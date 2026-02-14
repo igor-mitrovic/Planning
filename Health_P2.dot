@@ -5,19 +5,39 @@ digraph Health{
     Health [shape=Msquare color=green fontcolor=green];
     Health [root="true"]
 
+
+    // Graph for HPV Effort
     subgraph cluster_HPV_Effort{
-        label="HPV  Effort"
+
+        // Set local nodal style
+        node [style=filled, fillcolor=white]
+
+        label="HPV Effort"
         labeljust="c"
         style="filled"
         color=gray
         fillcolor="#f0f0f0"
-
         HPVStartNode [label = "Access HPV\nVaccine"] [shape=box]
         HPVNode2 [label = "First Dosage\nAdministered"] [shape=box]
         HPVNode3 [label = "Second Dosage\nAdministered"] [shape=box]
-        HPVTerminalNode [label="HPV Risk\nReduction"] [shape=doublecircle]
+        HPVTerminalNode [label="HPV Risk\nReduction"] [shape=box] [color=red]
         HPVStartNode->HPVNode2->HPVNode3->HPVTerminalNode
+    }   
+
+    subgraph cluster_Body_Focus{
+        label="Pysical Health & Body Aesthetic Effort"
+        
+        BFStart [label="Enrol in a Gym"] [shape=box]
+        BFPTNode [label="Get a Pesonal Trainer"] [shape=box]
+        BFNode1 [label=""] [shape=box]
+
     }
 
+    subgraph cluster_Supplement_Creation_Effort {
+        label=""
+    }
+
+    // Effort connection to a pillar
     HPVTerminalNode ->Health
+
 }
