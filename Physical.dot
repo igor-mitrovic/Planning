@@ -1,0 +1,122 @@
+digraph PhysicalHealth {
+  rankdir=TB;
+  bgcolor="white";
+  graph [splines=true, nodesep=0.35, ranksep=0.55, fontname="Times New Roman"];
+  node  [shape=box, fontname="Times New Roman", fontsize=12, color="black"];
+  edge  [color="black", arrowsize=0.8];
+
+  // Root
+  Health [shape=box, style="rounded", label="Health"];
+
+  // =========================
+  // Physical Health Doctrine
+  // =========================
+  subgraph cluster_physical {
+    label="Physical Health Doctrine";
+    style="filled";
+    color="gray70";
+    fillcolor="gray92";
+    fontsize=12;
+
+    // --- I. Infrastructure ---
+    subgraph cluster_infra {
+      label="I. Infrastructure (Non-Negotiable)";
+      style="rounded";
+      color="gray60";
+
+      Sleep    [label="Sleep Discipline Established\n(7–9h avg, 30 days)"];
+      Nutrition [label="Nutrition Control Established\n(Track intake, 30 days)"];
+      Consistency [label="Training Consistency Established\n(3x/week, 12 weeks)"];
+    }
+
+    InfraComplete [shape=oval, label="Infrastructure Stable"];
+
+    // --- II. Capacity Foundation ---
+    subgraph cluster_capacity {
+      label="II. Capacity Foundation";
+      style="rounded";
+      color="gray60";
+
+      ProgRes [label="Progressive Resistance Protocol"];
+      Strength [label="Strength Baseline Achieved\n(example ratios)"];
+      LeanMass [label="Lean Mass Baseline Established\n(measured)"];
+    }
+
+    CapacityComplete [shape=oval, label="Capacity Foundation Ready"];
+
+    // --- III. Body Composition Campaigns ---
+    subgraph cluster_campaigns {
+      label="III. Body Composition Campaign (Seasonal)";
+      style="rounded";
+      color="gray60";
+
+      CutStart   [label="Fat Loss Phase Initiated"];
+      Deficit    [label="Caloric Deficit Protocol"];
+      TargetBF   [shape=oval, label="Target Body Fat Achieved\n(10–12%)"];
+
+      BulkStart  [label="Lean Mass Phase Initiated"];
+      Surplus    [label="Controlled Surplus Protocol"];
+      LeanGain   [shape=oval, label="Lean Mass Increased\n(measured)"];
+    }
+
+    // --- IV. Optimization Layer ---
+    subgraph cluster_opt {
+      label="IV. Optimization Layer (Unlocked after 6–12 months)";
+      style="rounded";
+      color="gray60";
+
+      Supps   [label="Supplement Optimization"];
+      Blood   [label="Bloodwork Monitoring Protocol"];
+      Recovery [label="Recovery Optimization System"];
+    }
+
+    // --- V. Maintenance ---
+    subgraph cluster_maint {
+      label="V. Maintenance Loop";
+      style="rounded";
+      color="gray60";
+
+      Maintain [shape=oval, label="Sustainable Body Composition Maintained"];
+    }
+  }
+
+  // Root to doctrine
+  Health -> Sleep;
+  Health -> Nutrition;
+  Health -> Consistency;
+
+  // Infrastructure gating
+  Sleep -> InfraComplete;
+  Nutrition -> InfraComplete;
+  Consistency -> InfraComplete;
+
+  // Capacity gating
+  InfraComplete -> ProgRes;
+  InfraComplete -> Strength;
+  InfraComplete -> LeanMass;
+
+  ProgRes -> CapacityComplete;
+  Strength -> CapacityComplete;
+  LeanMass -> CapacityComplete;
+
+  // Campaigns (mutually exclusive in practice, but both unlocked)
+  CapacityComplete -> CutStart;
+  CapacityComplete -> BulkStart;
+
+  CutStart -> Deficit -> TargetBF;
+  BulkStart -> Surplus -> LeanGain;
+
+  // Maintenance synthesis
+  TargetBF -> Maintain;
+  LeanGain -> Maintain;
+
+  // Optimization layer (gated by stability / time)
+  CapacityComplete -> Supps;
+  CapacityComplete -> Blood;
+  CapacityComplete -> Recovery;
+
+  // Maintenance loop back to foundations
+  Maintain -> Sleep;
+  Maintain -> Nutrition;
+  Maintain -> Consistency;
+}
