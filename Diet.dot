@@ -1,1 +1,140 @@
 // Create a diet structure
+
+
+digraph DietDoctrine {
+  rankdir=TB;
+  bgcolor="white";
+  graph [splines=true, nodesep=0.35, ranksep=0.55, fontname="Times New Roman"];
+  node  [shape=box, fontname="Times New Roman", fontsize=12, color="black"];
+  edge  [color="black", arrowsize=0.8];
+
+  // Root
+  Diet [shape=box, style="rounded", label="Diet Doctrine"];
+
+  // =========================
+  // Diet Doctrine Focus Tree
+  // =========================
+  subgraph cluster_diet {
+    label="Diet Doctrine Focus Tree";
+    style="filled";
+    color="gray70";
+    fillcolor="gray92";
+    fontsize=12;
+
+    // --- I. Nutritional Infrastructure ---
+    subgraph cluster_infra {
+      label="I. Nutritional Infrastructure (Non-Negotiable)";
+      style="rounded";
+      color="gray60";
+
+      CalAwareness [label="Caloric Awareness Established\n(Track intake 30 days)"];
+      ProteinBase  [label="Protein Baseline Secured\n(1.6–2.2 g/kg daily)"];
+      WholeFoods   [label="Whole Food Priority Rule\n(≥80% minimally processed)"];
+      Hydration    [label="Hydration Protocol Established\n(≥35 ml/kg daily)"];
+    }
+
+    InfraStable [shape=oval, label="Nutritional Infrastructure Stable"];
+
+    // --- II. Metabolic Stability Layer ---
+    subgraph cluster_metabolic {
+      label="II. Metabolic Stability Layer";
+      style="rounded";
+      color="gray60";
+
+      MealTiming   [label="Meal Timing Standardized"];
+      StableEnergy [shape=oval, label="Stable Energy Profile Achieved\n(30 days, no crashes)"];
+      WtHR         [shape=oval, label="Waist-to-Height Ratio ≤ 0.5"];
+      GlucoseNorm  [shape=oval, label="Blood Glucose Within Normal Range"];
+    }
+
+    MetabolicReady [shape=oval, label="Metabolic Stability Established"];
+
+    // --- III. Phase-Based Nutrition Campaigns ---
+    subgraph cluster_campaigns {
+      label="III. Phase-Based Nutrition Campaigns";
+      style="rounded";
+      color="gray60";
+
+      // Fat loss
+      CutCampaign [label="Fat Loss Campaign"];
+      Deficit     [label="Caloric Deficit Protocol"];
+      TargetBF    [shape=oval, label="Target Body Fat Achieved\n(10–12%)"];
+
+      // Lean mass gain
+      BulkCampaign [label="Lean Mass Campaign"];
+      Surplus      [label="Controlled Surplus Protocol"];
+      LeanGain     [shape=oval, label="Lean Mass Increased\n(measured)"];
+    }
+
+    // --- IV. Optimization Layer ---
+    subgraph cluster_opt {
+      label="IV. Optimization Layer (Unlocked After 6 Months Stability)";
+      style="rounded";
+      color="gray60";
+
+      MicroSuff   [label="Micronutrient Sufficiency Verified"];
+      OmegaVD     [label="Omega-3 & Vitamin D Optimized"];
+      GutHealth   [label="Gut Health Optimized"];
+      SuppRational [label="Supplement Strategy Rationalized"];
+    }
+
+    // --- V. Maintenance State ---
+    subgraph cluster_maint {
+      label="V. Maintenance State";
+      style="rounded";
+      color="gray60";
+
+      Maintain [shape=oval, label="Sustainable Nutritional Stability\n(weight ±3%, no binge cycles)"];
+    }
+  }
+
+  // Root into Infrastructure
+  Diet -> CalAwareness;
+  Diet -> ProteinBase;
+  Diet -> WholeFoods;
+  Diet -> Hydration;
+
+  // Infrastructure gating (AND gate via InfraStable)
+  CalAwareness -> InfraStable;
+  ProteinBase  -> InfraStable;
+  WholeFoods   -> InfraStable;
+  Hydration    -> InfraStable;
+
+  // Metabolic stability gating
+  InfraStable -> MealTiming;
+  InfraStable -> StableEnergy;
+  InfraStable -> WtHR;
+  InfraStable -> GlucoseNorm;
+
+  MealTiming   -> MetabolicReady;
+  StableEnergy -> MetabolicReady;
+  WtHR         -> MetabolicReady;
+  GlucoseNorm  -> MetabolicReady;
+
+  // Campaigns unlock (mutually exclusive in practice; both available)
+  MetabolicReady -> CutCampaign;
+  MetabolicReady -> BulkCampaign;
+
+  CutCampaign -> Deficit -> TargetBF;
+  BulkCampaign -> Surplus -> LeanGain;
+
+  // Optimization unlock (after sustained stability — represented as MetabolicReady gate)
+  MetabolicReady -> MicroSuff;
+  MetabolicReady -> OmegaVD;
+  MetabolicReady -> GutHealth;
+  MetabolicReady -> SuppRational;
+
+  // Maintenance synthesis
+  TargetBF -> Maintain;
+  LeanGain -> Maintain;
+  MicroSuff -> Maintain;
+  OmegaVD   -> Maintain;
+  GutHealth -> Maintain;
+  SuppRational -> Maintain;
+
+  // Maintenance loop back to Infrastructure (keeps the system stable)
+  Maintain -> CalAwareness;
+  Maintain -> ProteinBase;
+  Maintain -> WholeFoods;
+  Maintain -> Hydration;
+}
