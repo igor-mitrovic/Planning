@@ -1,3 +1,220 @@
-digraph metaskills {
-    
+digraph MetaSkillsTree {
+    rankdir=LR;
+    graph [bgcolor="#0f1117", pad="0.3", nodesep="0.45", ranksep="0.9"];
+    node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#c9d1d9", fontcolor="#e6edf3", penwidth=1.2];
+    edge [color="#8b949e", penwidth=1.2, arrowsize=0.8];
+
+    // Core Philosophy
+    MetaSkills [label="META-SKILLS\nForce Multipliers for All Projects", fillcolor="#1f6feb", shape=box, penwidth=1.6];
+
+    // Terminal goal
+    MetaMastery [label="META-SKILL MASTERY\nFaster Learning • Better Execution • Higher Output Quality", fillcolor="#238636", shape=box, penwidth=1.8];
+
+    MetaSkills -> MetaMastery;
+
+    // =========================
+    // Reading
+    // =========================
+    subgraph cluster_reading {
+        label="Reading Improvement";
+        color="#30363d";
+        style="rounded";
+
+        Reading [label="Reading Skill", fillcolor="#1b2a41"];
+        ReadingSpeed [label="Increase Reading Speed", fillcolor="#263a5a"];
+        ReadingComprehension [label="Increase Comprehension", fillcolor="#263a5a"];
+        ActiveReading [label="Active Reading", fillcolor="#263a5a"];
+        NoteExtraction [label="Extract Key Ideas", fillcolor="#263a5a"];
+        Retention [label="Retention Improvement", fillcolor="#263a5a"];
+        ReadingStamina [label="Reading Stamina", fillcolor="#263a5a"];
+
+        Reading -> ReadingSpeed;
+        Reading -> ReadingComprehension;
+        Reading -> ActiveReading;
+        ActiveReading -> NoteExtraction;
+        ActiveReading -> Retention;
+        Reading -> ReadingStamina;
+    }
+
+    // =========================
+    // Typing
+    // =========================
+    subgraph cluster_typing {
+        label="Typing Speed Improvement";
+        color="#30363d";
+        style="rounded";
+
+        Typing [label="Typing Skill", fillcolor="#2d1b41"];
+        TypingFoundation [label="Typing Foundation", fillcolor="#4a2963"];
+        TouchTyping [label="Touch Typing Mastery\n(no looking at keyboard)", fillcolor="#4a2963"];
+
+        WPM40 [label="40 WPM\nBeginner Fluency", fillcolor="#4a2963"];
+        WPM60 [label="60 WPM\nProfessional Minimum", fillcolor="#4a2963"];
+        WPM80 [label="80 WPM\nHigh Productivity", fillcolor="#4a2963"];
+        WPM100 [label="100 WPM\nElite Typing Speed", fillcolor="#7b2cbf"];
+
+        TypingAccuracy [label="Typing Accuracy\n≥ 98%", fillcolor="#4a2963"];
+        ShortcutUsage [label="Keyboard Shortcuts", fillcolor="#4a2963"];
+        LowFrictionInput [label="Low Friction Input\nFast Idea → Text Transfer", fillcolor="#4a2963"];
+
+        Typing -> TypingFoundation;
+        TypingFoundation -> TouchTyping;
+        TouchTyping -> WPM40;
+        WPM40 -> WPM60;
+        WPM60 -> WPM80;
+        WPM80 -> WPM100;
+
+        WPM60 -> TypingAccuracy;
+        TypingAccuracy -> WPM100;
+
+        WPM80 -> ShortcutUsage;
+        ShortcutUsage -> LowFrictionInput;
+    }
+
+    // =========================
+    // Writing
+    // =========================
+    subgraph cluster_writing {
+        label="Writing Improvement";
+        color="#30363d";
+        style="rounded";
+
+        Writing [label="Writing Skill", fillcolor="#3a2f0b"];
+        ClearWriting [label="Clear Writing", fillcolor="#5c4b12"];
+        ConciseWriting [label="Concise Writing", fillcolor="#5c4b12"];
+        PersuasiveWriting [label="Persuasive Writing", fillcolor="#5c4b12"];
+        StructuredWriting [label="Structured Expression", fillcolor="#5c4b12"];
+        TechnicalWriting [label="Technical Writing", fillcolor="#5c4b12"];
+
+        Writing -> ClearWriting;
+        Writing -> ConciseWriting;
+        Writing -> PersuasiveWriting;
+        Writing -> StructuredWriting;
+        StructuredWriting -> TechnicalWriting;
+    }
+
+    // =========================
+    // Thinking
+    // =========================
+    subgraph cluster_thinking {
+        label="Thinking Quality";
+        color="#30363d";
+        style="rounded";
+
+        Thinking [label="Thinking Skill", fillcolor="#0b3a2f"];
+        FirstPrinciples [label="First-Principles Thinking", fillcolor="#145c4b"];
+        CriticalThinking [label="Critical Thinking", fillcolor="#145c4b"];
+        SystemsThinking [label="Systems Thinking", fillcolor="#145c4b"];
+        ProbabilisticThinking [label="Probabilistic Thinking", fillcolor="#145c4b"];
+        DecisionMaking [label="Decision Quality", fillcolor="#145c4b"];
+        MentalModels [label="Mental Models", fillcolor="#145c4b"];
+
+        Thinking -> FirstPrinciples;
+        Thinking -> CriticalThinking;
+        Thinking -> SystemsThinking;
+        Thinking -> ProbabilisticThinking;
+        Thinking -> MentalModels;
+        CriticalThinking -> DecisionMaking;
+        ProbabilisticThinking -> DecisionMaking;
+        SystemsThinking -> DecisionMaking;
+    }
+
+    // =========================
+    // Learning
+    // =========================
+    subgraph cluster_learning {
+        label="Learning Efficiency";
+        color="#30363d";
+        style="rounded";
+
+        Learning [label="Learning Skill", fillcolor="#3a1a1a"];
+        LearnHowToLearn [label="Learn How to Learn", fillcolor="#5a2727"];
+        SpacedRepetition [label="Spaced Repetition", fillcolor="#5a2727"];
+        RecallPractice [label="Active Recall", fillcolor="#5a2727"];
+        FeedbackLoops [label="Feedback Loops", fillcolor="#5a2727"];
+        SkillTransfer [label="Cross-Domain Transfer", fillcolor="#5a2727"];
+        KnowledgeCompounding [label="Knowledge Compounding", fillcolor="#5a2727"];
+
+        Learning -> LearnHowToLearn;
+        Learning -> SpacedRepetition;
+        Learning -> RecallPractice;
+        Learning -> FeedbackLoops;
+        Learning -> SkillTransfer;
+        RecallPractice -> KnowledgeCompounding;
+        SpacedRepetition -> KnowledgeCompounding;
+        SkillTransfer -> KnowledgeCompounding;
+    }
+
+    // =========================
+    // Focus and execution
+    // =========================
+    subgraph cluster_execution {
+        label="Focus and Execution";
+        color="#30363d";
+        style="rounded";
+
+        Execution [label="Execution Skill", fillcolor="#2a2a2a"];
+        DeepWork [label="Deep Work", fillcolor="#444c56"];
+        AttentionControl [label="Attention Control", fillcolor="#444c56"];
+        TaskDecomposition [label="Task Decomposition", fillcolor="#444c56"];
+        Consistency [label="Consistency", fillcolor="#444c56"];
+        OutputCapacity [label="Increase Output Capacity", fillcolor="#444c56"];
+        ReviewLoops [label="Review and Adjustment", fillcolor="#444c56"];
+
+        Execution -> DeepWork;
+        Execution -> AttentionControl;
+        Execution -> TaskDecomposition;
+        Execution -> Consistency;
+        DeepWork -> OutputCapacity;
+        TaskDecomposition -> OutputCapacity;
+        Consistency -> ReviewLoops;
+    }
+
+    // =========================
+    // Communication
+    // =========================
+    subgraph cluster_communication {
+        label="Communication";
+        color="#30363d";
+        style="rounded";
+
+        Communication [label="Communication Skill", fillcolor="#1f2d3d"];
+        VerbalClarity [label="Verbal Clarity", fillcolor="#2f4a66"];
+        Listening [label="Listening Skill", fillcolor="#2f4a66"];
+        Explanation [label="Explain Complex Ideas Simply", fillcolor="#2f4a66"];
+        Argumentation [label="Argumentation", fillcolor="#2f4a66"];
+        SocialTransmission [label="Transmit Ideas Effectively", fillcolor="#2f4a66"];
+
+        Communication -> VerbalClarity;
+        Communication -> Listening;
+        Communication -> Explanation;
+        Communication -> Argumentation;
+        Explanation -> SocialTransmission;
+        VerbalClarity -> SocialTransmission;
+        Listening -> SocialTransmission;
+    }
+
+    // Main connections to root
+    MetaSkills -> Reading;
+    MetaSkills -> Typing;
+    MetaSkills -> Writing;
+    MetaSkills -> Thinking;
+    MetaSkills -> Learning;
+    MetaSkills -> Execution;
+    MetaSkills -> Communication;
+
+    // Cross-links
+    ReadingComprehension -> CriticalThinking;
+    NoteExtraction -> StructuredWriting;
+    WPM100 -> OutputCapacity;
+    TypingAccuracy -> TechnicalWriting;
+    ClearWriting -> Explanation;
+    MentalModels -> SkillTransfer;
+    LearnHowToLearn -> ReadingComprehension;
+    AttentionControl -> ReadingStamina;
+    LowFrictionInput -> OutputCapacity;
+    DecisionMaking -> MetaMastery;
+    KnowledgeCompounding -> MetaMastery;
+    OutputCapacity -> MetaMastery;
+    SocialTransmission -> MetaMastery;
 }
