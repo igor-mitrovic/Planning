@@ -1,0 +1,147 @@
+digraph DrivingFocusTree {
+    graph [
+        rankdir=LR,
+        splines=ortho,
+        nodesep=0.45,
+        ranksep=0.8,
+        bgcolor="#0f1115"
+    ];
+
+    node [
+        shape=box,
+        style="rounded,filled",
+        fontname="Arial",
+        fontsize=11,
+        color="#9aa4b2",
+        fillcolor="#1b1f27",
+        fontcolor="#f5f7fa",
+        margin="0.18,0.12"
+    ];
+
+    edge [
+        color="#7f8ea3",
+        penwidth=1.4,
+        arrowsize=0.8
+    ];
+
+    // =========================
+    // PREREQUISITES
+    // =========================
+    subgraph cluster_prereq {
+        label="Prerequisites";
+        color="#3b4252";
+        fontcolor="#d8dee9";
+        style="rounded";
+
+        licence [label="Get Driving Licence"];
+        car [label="Buy a Car"];
+        actual_start [label="Begin Driving Development", shape=ellipse, fillcolor="#243447"];
+    }
+
+    licence -> actual_start;
+    car -> actual_start;
+
+    // =========================
+    // FOUNDATIONS
+    // =========================
+    subgraph cluster_foundation {
+        label="Driving Foundations";
+        color="#3b4252";
+        fontcolor="#d8dee9";
+        style="rounded";
+
+        familiar [label="Learn Your Car\nControls, Dimensions,\nBlind Spots, Parking Feel"];
+        checks [label="Pre-Drive Routine\nFuel, Lights, Tires,\nMirrors, Seat Position"];
+        short_routes [label="Drive Familiar Short Routes"];
+        city_basic [label="Basic City Driving\nTurns, Lanes, Traffic Lights"];
+        parking_basic [label="Basic Parking\nReverse, Parallel, Tight Spots"];
+        weather_basic [label="Drive in Light Rain / Night"];
+    }
+
+    actual_start -> familiar;
+    actual_start -> checks;
+
+    familiar -> short_routes;
+    checks -> short_routes;
+
+    short_routes -> city_basic;
+    short_routes -> parking_basic;
+    city_basic -> weather_basic;
+    parking_basic -> weather_basic;
+
+    // =========================
+    // INDEPENDENCE
+    // =========================
+    subgraph cluster_independence {
+        label="Independent Driving";
+        color="#3b4252";
+        fontcolor="#d8dee9";
+        style="rounded";
+
+        solo_errands [label="Drive Solo for Errands"];
+        commute [label="Establish Weekly Driving Routine"];
+        navigation [label="Drive Using Navigation\nto Unfamiliar Places"];
+        traffic_dense [label="Handle Dense Traffic\nConfidently"];
+        hill_start [label="Master Hill Starts\nand Tight Maneuvering"];
+    }
+
+    weather_basic -> solo_errands;
+    weather_basic -> navigation;
+    city_basic -> traffic_dense;
+    parking_basic -> hill_start;
+
+    solo_errands -> commute;
+    navigation -> commute;
+    traffic_dense -> commute;
+    hill_start -> commute;
+
+    // =========================
+    // MILEAGE BRANCH
+    // =========================
+    subgraph cluster_mileage {
+        label="Mileage Accumulation";
+        color="#3b4252";
+        fontcolor="#d8dee9";
+        style="rounded";
+
+        km_100 [label="Drive 100 Kilometers"];
+        km_500 [label="Drive 500 Kilometers"];
+        km_1000 [label="Drive 1000 Kilometers"];
+        km_2500 [label="Drive 2500 Kilometers"];
+        km_5000 [label="Drive 5000 Kilometers", shape=doubleoctagon, fillcolor="#2d3e2f"];
+    }
+
+    commute -> km_100;
+    km_100 -> km_500;
+    km_500 -> km_1000;
+    km_1000 -> km_2500;
+    km_2500 -> km_5000;
+
+    // =========================
+    // COMPETENCE BRANCH
+    // =========================
+    subgraph cluster_mastery {
+        label="Competence & Resilience";
+        color="#3b4252";
+        fontcolor="#d8dee9";
+        style="rounded";
+
+        highway [label="Drive on Highway / Open Road"];
+        bad_weather [label="Drive in Heavy Rain / Poor Conditions"];
+        long_trip [label="Complete a Long-Distance Trip"];
+        maintenance [label="Understand Basic Car Maintenance"];
+        incidents [label="Handle Minor Incidents\nFlat Tire, Battery, Warning Lights"];
+        confident_driver [label="Confident Independent Driver", shape=doubleoctagon, fillcolor="#243b55"];
+    }
+
+    commute -> highway;
+    commute -> maintenance;
+    km_500 -> bad_weather;
+    km_1000 -> long_trip;
+    maintenance -> incidents;
+    highway -> long_trip;
+    bad_weather -> confident_driver;
+    long_trip -> confident_driver;
+    incidents -> confident_driver;
+    km_5000 -> confident_driver;
+}
