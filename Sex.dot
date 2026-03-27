@@ -1,0 +1,88 @@
+digraph Sex_Focus_Tree {
+    rankdir=LR;
+    node [shape=circle, style=filled, fillcolor=lightgray];
+
+    // ROOT
+    Start [label="Start\n(Sexual Development)"];
+
+    // LEVEL 1 CLUSTERS
+    Physical [label="Physical\nCapability"];
+    Psychological [label="Psychological\nStability"];
+    Knowledge [label="Sexual\nKnowledge"];
+    Social [label="Partner\nDynamics"];
+
+    Start -> Physical;
+    Start -> Psychological;
+    Start -> Knowledge;
+    Start -> Social;
+
+    // PHYSICAL BRANCH
+    Gym [label="Gym / Fitness"];
+    Cardio [label="Cardio\nEndurance"];
+    Pelvic [label="Pelvic Floor\nControl"];
+    Erections [label="Erection\nReliability"];
+
+    Physical -> Gym;
+    Gym -> Cardio;
+    Gym -> Pelvic;
+    Cardio -> Erections;
+    Pelvic -> Erections;
+
+    // PSYCHOLOGICAL BRANCH
+    NoPorn [label="Eliminate\nPorn"];
+    Anxiety [label="Reduce\nAnxiety"];
+    Confidence [label="Sexual\nConfidence"];
+    Presence [label="Mental\nPresence"];
+
+    Psychological -> NoPorn;
+    NoPorn -> Anxiety;
+    Anxiety -> Confidence;
+    Confidence -> Presence;
+
+    // KNOWLEDGE BRANCH
+    Anatomy [label="Learn\nAnatomy"];
+    Foreplay [label="Foreplay\nMastery"];
+    Oral [label="Oral Sex\nSkill"];
+    Positions [label="Positions\nKnowledge"];
+    Rhythm [label="Rhythm &\nPacing"];
+
+    Knowledge -> Anatomy;
+    Anatomy -> Foreplay;
+    Foreplay -> Oral;
+    Oral -> Positions;
+    Positions -> Rhythm;
+
+    // SOCIAL BRANCH
+    Consent [label="Consent &\nBoundaries"];
+    Communication [label="Communication"];
+    Escalation [label="Escalation\nSkill"];
+    Feedback [label="Read\nFeedback"];
+    Comfort [label="Create\nComfort"];
+
+    Social -> Consent;
+    Consent -> Communication;
+    Communication -> Escalation;
+    Escalation -> Feedback;
+    Feedback -> Comfort;
+
+    // FINAL INTEGRATION
+    Control [label="Ejaculation\nControl"];
+    Satisfaction [label="Partner\nSatisfaction"];
+    Leadership [label="Sexual\nLeadership"];
+
+    Erections -> Control;
+    Rhythm -> Control;
+
+    Comfort -> Satisfaction;
+    Feedback -> Satisfaction;
+
+    Presence -> Leadership;
+    Escalation -> Leadership;
+
+    // TERMINAL NODE
+    Mastery [label="Good at Sex\n(Sexual Competence)", shape=doublecircle, fillcolor=gold];
+
+    Control -> Mastery;
+    Satisfaction -> Mastery;
+    Leadership -> Mastery;
+}
