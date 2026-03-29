@@ -1,88 +1,51 @@
-digraph Sex_Focus_Tree {
+digraph Sexual_Competence_Tree {
     rankdir=LR;
-    node [shape=circle, style=filled, fillcolor=lightgray];
+    splines=ortho;
+    nodesep=0.7;
+    ranksep=1.0;
 
-    // ROOT
-    Start [label="Start\n(Sexual Development)"];
+    node [
+        shape=box,
+        style="rounded,filled",
+        fillcolor="#d9d9d9",
+        color="#444444",
+        fontname="Arial",
+        fontsize=11,
+        margin="0.18,0.10"
+    ];
 
-    // LEVEL 1 CLUSTERS
-    Physical [label="Physical\nCapability"];
-    Psychological [label="Psychological\nStability"];
-    Knowledge [label="Sexual\nKnowledge"];
-    Social [label="Partner\nDynamics"];
+    edge [
+        color="#555555",
+        penwidth=1.4,
+        arrowsize=0.8
+    ];
 
-    Start -> Physical;
-    Start -> Psychological;
-    Start -> Knowledge;
-    Start -> Social;
-
-    // PHYSICAL BRANCH
-    Gym [label="Gym / Fitness"];
-    Cardio [label="Cardio\nEndurance"];
-    Pelvic [label="Pelvic Floor\nControl"];
-    Erections [label="Erection\nReliability"];
-
-    Physical -> Gym;
-    Gym -> Cardio;
-    Gym -> Pelvic;
-    Cardio -> Erections;
-    Pelvic -> Erections;
-
-    // PSYCHOLOGICAL BRANCH
-    NoPorn [label="Eliminate\nPorn"];
-    Anxiety [label="Reduce\nAnxiety"];
+    Start [label="Start"];
+    Hygiene [label="Personal Hygiene\n& Grooming"];
+    Fitness [label="Basic Fitness\n& Energy"];
+    Consent [label="Consent\nUnderstanding"];
+    Communication [label="Communication\nBasics"];
+    Opportunity [label="Create\nOpportunity"];
+    FirstExperience [label="First Sexual\nExperience"];
+    Comfort [label="Comfort\n& Calmness"];
     Confidence [label="Sexual\nConfidence"];
-    Presence [label="Mental\nPresence"];
+    Awareness [label="Partner\nAwareness"];
+    Exp5 [label="5 Positive\nExperiences"];
+    Exp15 [label="15 Positive\nExperiences"];
+    Consistency [label="Consistent\nPerformance"];
+    Competence [label="Sexual\nCompetence", shape=doubleoctagon, fillcolor="#f3d37a"];
 
-    Psychological -> NoPorn;
-    NoPorn -> Anxiety;
-    Anxiety -> Confidence;
-    Confidence -> Presence;
-
-    // KNOWLEDGE BRANCH
-    Anatomy [label="Learn\nAnatomy"];
-    Foreplay [label="Foreplay\nMastery"];
-    Oral [label="Oral Sex\nSkill"];
-    Positions [label="Positions\nKnowledge"];
-    Rhythm [label="Rhythm &\nPacing"];
-
-    Knowledge -> Anatomy;
-    Anatomy -> Foreplay;
-    Foreplay -> Oral;
-    Oral -> Positions;
-    Positions -> Rhythm;
-
-    // SOCIAL BRANCH
-    Consent [label="Consent &\nBoundaries"];
-    Communication [label="Communication"];
-    Escalation [label="Escalation\nSkill"];
-    Feedback [label="Read\nFeedback"];
-    Comfort [label="Create\nComfort"];
-
-    Social -> Consent;
+    Start -> Hygiene;
+    Hygiene -> Fitness;
+    Fitness -> Consent;
     Consent -> Communication;
-    Communication -> Escalation;
-    Escalation -> Feedback;
-    Feedback -> Comfort;
-
-    // FINAL INTEGRATION
-    Control [label="Ejaculation\nControl"];
-    Satisfaction [label="Partner\nSatisfaction"];
-    Leadership [label="Sexual\nLeadership"];
-
-    Erections -> Control;
-    Rhythm -> Control;
-
-    Comfort -> Satisfaction;
-    Feedback -> Satisfaction;
-
-    Presence -> Leadership;
-    Escalation -> Leadership;
-
-    // TERMINAL NODE
-    Mastery [label="Good at Sex\n(Sexual Competence)", shape=doublecircle, fillcolor=gold];
-
-    Control -> Mastery;
-    Satisfaction -> Mastery;
-    Leadership -> Mastery;
+    Communication -> Opportunity;
+    Opportunity -> FirstExperience;
+    FirstExperience -> Comfort;
+    Comfort -> Confidence;
+    Confidence -> Awareness;
+    Awareness -> Exp5;
+    Exp5 -> Exp15;
+    Exp15 -> Consistency;
+    Consistency -> Competence;
 }
