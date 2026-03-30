@@ -42,6 +42,39 @@ digraph DrivingFocusTree {
     car -> actual_start;
 
     // =========================
+    // THEORY + HANDLING REACTIVATION
+    // =========================
+    subgraph cluster_reactivation {
+        label="Theory & Handling Reactivation";
+        color="#3b4252";
+        fontcolor="#d8dee9";
+        style="rounded";
+
+        roadsigns [label="Relearn Road Signs"];
+        theory [label="Relearn Intersections\nand Theory"];
+        handling [label="Relearn Car Handling"];
+        clutch [label="Practice Clutch Control"];
+        familiar [label="Learn Your Car\nControls, Dimensions,\nBlind Spots, Parking Feel"];
+        checks [label="Pre-Drive Routine\nFuel, Lights, Tires,\nMirrors, Seat Position"];
+        redo20 [label="Redo 20 Hours of Driving", fillcolor="#2a2f3a"];
+    }
+
+    actual_start -> roadsigns;
+    actual_start -> theory;
+    actual_start -> handling;
+
+    handling -> clutch;
+    handling -> familiar;
+    clutch -> familiar;
+
+    roadsigns -> checks;
+    theory -> checks;
+
+    familiar -> redo20;
+    checks -> redo20;
+    clutch -> redo20;
+
+    // =========================
     // FOUNDATIONS
     // =========================
     subgraph cluster_foundation {
@@ -50,19 +83,15 @@ digraph DrivingFocusTree {
         fontcolor="#d8dee9";
         style="rounded";
 
-        familiar [label="Learn Your Car\nControls, Dimensions,\nBlind Spots, Parking Feel"];
-        checks [label="Pre-Drive Routine\nFuel, Lights, Tires,\nMirrors, Seat Position"];
         short_routes [label="Drive Familiar Short Routes"];
         city_basic [label="Basic City Driving\nTurns, Lanes, Traffic Lights"];
         parking_basic [label="Basic Parking\nReverse, Parallel, Tight Spots"];
         weather_basic [label="Drive in Light Rain / Night"];
     }
 
-    actual_start -> familiar;
-    actual_start -> checks;
-
-    familiar -> short_routes;
-    checks -> short_routes;
+    redo20 -> short_routes;
+    redo20 -> parking_basic;
+    redo20 -> city_basic;
 
     short_routes -> city_basic;
     short_routes -> parking_basic;
@@ -79,10 +108,10 @@ digraph DrivingFocusTree {
         style="rounded";
 
         solo_errands [label="Drive Solo for Errands"];
-        commute [label="Establish Weekly Driving Routine"];
         navigation [label="Drive Using Navigation\nto Unfamiliar Places"];
         traffic_dense [label="Handle Dense Traffic\nConfidently"];
         hill_start [label="Master Hill Starts\nand Tight Maneuvering"];
+        commute [label="Establish Weekly Driving Routine"];
     }
 
     weather_basic -> solo_errands;
