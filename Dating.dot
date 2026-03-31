@@ -1,0 +1,536 @@
+digraph DatingPhasesWithConfidence {
+    rankdir=LR;
+    splines=ortho;
+    compound=true;
+    nodesep=0.45;
+    ranksep=0.9;
+    fontname="Segoe UI";
+
+    graph [
+        bgcolor="white",
+        pad="0.3"
+    ];
+
+    node [
+        shape=box,
+        style="rounded,filled",
+        fontname="Segoe UI",
+        fontsize=10,
+        color="#2b2b2b",
+        fillcolor="#f7f7f7",
+        margin="0.16,0.10"
+    ];
+
+    edge [
+        color="#444444",
+        penwidth=1.3,
+        arrowsize=0.75
+    ];
+
+    Start [
+        label="Start:\nOpen to Dating",
+        shape=ellipse,
+        fillcolor="#e8f0ff",
+        fontsize=11
+    ];
+
+    Goal [
+        label="Goal:\nHealthy Relationship\nor Clear Exit",
+        shape=ellipse,
+        fillcolor="#dff5e3",
+        fontsize=11
+    ];
+
+    Exit [
+        label="Respectful Exit",
+        shape=ellipse,
+        fillcolor="#ffe9e9",
+        fontsize=11
+    ];
+
+    // =========================
+    // Phase 1
+    // =========================
+    subgraph cluster_p1 {
+        label="Phase 1 — Exposure & Opportunity";
+        color="#cfcfcf";
+        style="rounded";
+
+        P1 [label="Exposure & Opportunity", shape=ellipse, fillcolor="#eef4ff"];
+
+        P1A [label="1.1 Self-Preparation", fillcolor="#f2f8ff"];
+        P1A1 [label="Grooming"];
+        P1A2 [label="Style / Clothing"];
+        P1A3 [label="Posture / Body Language"];
+        P1A4 [label="Confidence"];
+        P1A5 [label="Emotional Stability"];
+        P1A6 [label="Life Structure"];
+
+        // Confidence subcluster
+        subgraph cluster_confidence {
+            label="Confidence Breakdown";
+            color="#b8c8e8";
+            style="rounded,dashed";
+
+            C0 [label="Confidence", shape=ellipse, fillcolor="#dfe9ff"];
+
+            C1 [label="Internal Stability"];
+            C1A [label="Emotional Control"];
+            C1B [label="Reject Overreaction"];
+            C1C [label="No Pedestalizing"];
+            C1D [label="Stable Self-Worth"];
+
+            C2 [label="Self-Worth"];
+            C2A [label="Pride in Work"];
+            C2B [label="Physical Self-Image"];
+            C2C [label="Life Competence"];
+            C2D [label="Standards"];
+
+            C3 [label="Behavioral Confidence"];
+            C3A [label="Eye Contact"];
+            C3B [label="Voice Tone"];
+            C3C [label="Relaxed Body Language"];
+            C3D [label="Clear Speech"];
+            C3E [label="Do Not Rush"];
+
+            C4 [label="Social Calibration"];
+            C4A [label="Read Interest"];
+            C4B [label="Timing"];
+            C4C [label="Push / Pull Balance"];
+            C4D [label="Know When to Stop"];
+
+            C5 [label="Outcome Independence"];
+            C5A [label="Accept Rejection"];
+            C5B [label="Walk Away"];
+            C5C [label="No Chasing"];
+            C5D [label="No Convincing"];
+
+            C6 [label="Experience"];
+            C6A [label="More Interactions"];
+            C6B [label="More Rejections"];
+            C6C [label="More Dates"];
+            C6D [label="Situation Familiarity"];
+
+            C7 [label="Masculine Frame"];
+            C7A [label="Direction"];
+            C7B [label="Decisiveness"];
+            C7C [label="Emotional Steadiness"];
+            C7D [label="Lead Calmly"];
+
+            C0 -> C1 -> C2 -> C3 -> C4 -> C5 -> C6 -> C7;
+
+            C1 -> C1A; C1 -> C1B; C1 -> C1C; C1 -> C1D;
+            C2 -> C2A; C2 -> C2B; C2 -> C2C; C2 -> C2D;
+            C3 -> C3A; C3 -> C3B; C3 -> C3C; C3 -> C3D; C3 -> C3E;
+            C4 -> C4A; C4 -> C4B; C4 -> C4C; C4 -> C4D;
+            C5 -> C5A; C5 -> C5B; C5 -> C5C; C5 -> C5D;
+            C6 -> C6A; C6 -> C6B; C6 -> C6C; C6 -> C6D;
+            C7 -> C7A; C7 -> C7B; C7 -> C7C; C7 -> C7D;
+        }
+
+        P1B [label="1.2 Environment Building", fillcolor="#f2f8ff"];
+        P1B1 [label="Friends / Social Circle"];
+        P1B2 [label="Work / Daily Exposure"];
+        P1B3 [label="Hobbies / Events"];
+        P1B4 [label="Online Dating Presence"];
+        P1B5 [label="Repeat Exposure"];
+
+        P1C [label="1.3 Opportunity Recognition", fillcolor="#f2f8ff"];
+        P1C1 [label="Notice Interest Signals"];
+        P1C2 [label="Separate Politeness\nfrom Attraction"];
+        P1C3 [label="Assess Availability"];
+        P1C4 [label="Choose Timing"];
+
+        P1D [label="1.4 Initial Move", fillcolor="#f2f8ff"];
+        P1D1 [label="Opener"];
+        P1D2 [label="First Conversation"];
+        P1D3 [label="Playfulness"];
+        P1D4 [label="Show Intent\nwithout Overcommitment"];
+
+        P1 -> P1A -> P1B -> P1C -> P1D;
+
+        P1A -> P1A1; 
+        P1A -> P1A2; 
+        P1A -> P1A3; 
+        P1A -> P1A4; 
+        P1A -> P1A5; 
+        P1A -> P1A6;
+
+        P1A4 -> C0 [lhead=cluster_confidence];
+
+        P1B -> P1B1; P1B -> P1B2; P1B -> P1B3; P1B -> P1B4; P1B -> P1B5;
+        P1C -> P1C1; P1C -> P1C2; P1C -> P1C3; P1C -> P1C4;
+        P1D -> P1D1; P1D -> P1D2; P1D -> P1D3; P1D -> P1D4;
+    }
+
+    // =========================
+    // Phase 2
+    // =========================
+    subgraph cluster_p2 {
+        label="Phase 2 — Early Interaction";
+        color="#cfcfcf";
+        style="rounded";
+
+        P2 [label="Early Interaction", shape=ellipse, fillcolor="#eef4ff"];
+
+        P2A [label="2.1 Opening Rapport", fillcolor="#f2f8ff"];
+        P2A1 [label="Basic Conversation"];
+        P2A2 [label="Comfort"];
+        P2A3 [label="Shared Topics"];
+        P2A4 [label="Emotional Tone"];
+
+        P2B [label="2.2 Attraction Signaling", fillcolor="#f2f8ff"];
+        P2B1 [label="Eye Contact"];
+        P2B2 [label="Humor"];
+        P2B3 [label="Playful Tension"];
+        P2B4 [label="Calm Confidence"];
+        P2B5 [label="Man-to-Woman Framing"];
+
+        P2C [label="2.3 Reciprocity Testing", fillcolor="#f2f8ff"];
+        P2C1 [label="Does She Ask Back?"];
+        P2C2 [label="Does She Continue?"];
+        P2C3 [label="Does She Invest Energy?"];
+        P2C4 [label="Does She Make Time?"];
+
+        P2D [label="2.4 Contact Continuation", fillcolor="#f2f8ff"];
+        P2D1 [label="Exchange Contact"];
+        P2D2 [label="Set Next Conversation"];
+        P2D3 [label="Preserve Momentum"];
+        P2D4 [label="Avoid Overtexting"];
+
+        P2 -> P2A -> P2B -> P2C -> P2D;
+
+        P2A -> P2A1; P2A -> P2A2; P2A -> P2A3; P2A -> P2A4;
+        P2B -> P2B1; P2B -> P2B2; P2B -> P2B3; P2B -> P2B4; P2B -> P2B5;
+        P2C -> P2C1; P2C -> P2C2; P2C -> P2C3; P2C -> P2C4;
+        P2D -> P2D1; P2D -> P2D2; P2D -> P2D3; P2D -> P2D4;
+    }
+
+    // =========================
+    // Phase 3
+    // =========================
+    subgraph cluster_p3 {
+        label="Phase 3 — Pre-Date Screening";
+        color="#cfcfcf";
+        style="rounded";
+
+        P3 [label="Pre-Date Screening", shape=ellipse, fillcolor="#eef4ff"];
+
+        P3A [label="3.1 Remote Interaction", fillcolor="#f2f8ff"];
+        P3A1 [label="Texting"];
+        P3A2 [label="Voice Notes"];
+        P3A3 [label="Phone Calls"];
+        P3A4 [label="Social Media Interaction"];
+
+        P3B [label="3.2 Interest Verification", fillcolor="#f2f8ff"];
+        P3B1 [label="Response Speed"];
+        P3B2 [label="Enthusiasm"];
+        P3B3 [label="Consistency"];
+        P3B4 [label="Willingness to Meet"];
+        P3B5 [label="Initiative from Her"];
+
+        P3C [label="3.3 Date Proposal", fillcolor="#f2f8ff"];
+        P3C1 [label="Choose Timing"];
+        P3C2 [label="Be Direct"];
+        P3C3 [label="Keep It Simple"];
+        P3C4 [label="Avoid Overinvestment"];
+
+        P3D [label="3.4 Logistics", fillcolor="#f2f8ff"];
+        P3D1 [label="Place"];
+        P3D2 [label="Time"];
+        P3D3 [label="Transport"];
+        P3D4 [label="Confirmation"];
+        P3D5 [label="Handle Rescheduling"];
+
+        P3 -> P3A -> P3B -> P3C -> P3D;
+
+        P3A -> P3A1; P3A -> P3A2; P3A -> P3A3; P3A -> P3A4;
+        P3B -> P3B1; P3B -> P3B2; P3B -> P3B3; P3B -> P3B4; P3B -> P3B5;
+        P3C -> P3C1; P3C -> P3C2; P3C -> P3C3; P3C -> P3C4;
+        P3D -> P3D1; P3D -> P3D2; P3D -> P3D3; P3D -> P3D4; P3D -> P3D5;
+    }
+
+    // =========================
+    // Phase 4
+    // =========================
+    subgraph cluster_p4 {
+        label="Phase 4 — First Date";
+        color="#cfcfcf";
+        style="rounded";
+
+        P4 [label="First Date", shape=ellipse, fillcolor="#eef4ff"];
+
+        P4A [label="4.1 Arrival & Vibe", fillcolor="#f2f8ff"];
+        P4A1 [label="Greeting"];
+        P4A2 [label="Initial Comfort"];
+        P4A3 [label="Read Energy"];
+        P4A4 [label="Settle Nerves"];
+
+        P4B [label="4.2 Conversation Depth", fillcolor="#f2f8ff"];
+        P4B1 [label="Fun / Light Topics"];
+        P4B2 [label="Personal Background"];
+        P4B3 [label="Values Hints"];
+        P4B4 [label="Lifestyle"];
+        P4B5 [label="Ambition / Personality"];
+
+        P4C [label="4.3 Chemistry Assessment", fillcolor="#f2f8ff"];
+        P4C1 [label="Conversation Flow"];
+        P4C2 [label="Laughter"];
+        P4C3 [label="Tension"];
+        P4C4 [label="Ease of Silence"];
+        P4C5 [label="Mutual Curiosity"];
+
+        P4D [label="4.4 Behavioral Observation", fillcolor="#f2f8ff"];
+        P4D1 [label="Politeness"];
+        P4D2 [label="Warmth"];
+        P4D3 [label="Respect"];
+        P4D4 [label="Emotional Regulation"];
+        P4D5 [label="Authenticity"];
+
+        P4E [label="4.5 Ending the Date", fillcolor="#f2f8ff"];
+        P4E1 [label="End at Right Time"];
+        P4E2 [label="Express Interest"];
+        P4E3 [label="Suggest Next Date"];
+        P4E4 [label="Do Not Force"];
+
+        P4 -> P4A -> P4B -> P4C -> P4D -> P4E;
+
+        P4A -> P4A1; P4A -> P4A2; P4A -> P4A3; P4A -> P4A4;
+        P4B -> P4B1; P4B -> P4B2; P4B -> P4B3; P4B -> P4B4; P4B -> P4B5;
+        P4C -> P4C1; P4C -> P4C2; P4C -> P4C3; P4C -> P4C4; P4C -> P4C5;
+        P4D -> P4D1; P4D -> P4D2; P4D -> P4D3; P4D -> P4D4; P4D -> P4D5;
+        P4E -> P4E1; P4E -> P4E2; P4E -> P4E3; P4E -> P4E4;
+    }
+
+    // =========================
+    // Phase 5
+    // =========================
+    subgraph cluster_p5 {
+        label="Phase 5 — Early Dating";
+        color="#cfcfcf";
+        style="rounded";
+
+        P5 [label="Early Dating", shape=ellipse, fillcolor="#eef4ff"];
+
+        P5A [label="5.1 Post-Date Follow-Up", fillcolor="#f2f8ff"];
+        P5A1 [label="Message After Date"];
+        P5A2 [label="Reaffirm Interest"];
+        P5A3 [label="Check Reciprocity"];
+        P5A4 [label="Set Next Meeting"];
+
+        P5B [label="5.2 Repeated Dating", fillcolor="#f2f8ff"];
+        P5B1 [label="Second Date"];
+        P5B2 [label="Third Date"];
+        P5B3 [label="Varied Date Types"];
+        P5B4 [label="Different Contexts"];
+
+        P5C [label="5.3 Emotional Bond Building", fillcolor="#f2f8ff"];
+        P5C1 [label="Moderate Vulnerability"];
+        P5C2 [label="Shared Jokes"];
+        P5C3 [label="Personal Stories"];
+        P5C4 [label="Trust Building"];
+        P5C5 [label="Warmth"];
+
+        P5D [label="5.4 Pattern Recognition", fillcolor="#f2f8ff"];
+        P5D1 [label="Consistency"];
+        P5D2 [label="Communication Style"];
+        P5D3 [label="Reliability"];
+        P5D4 [label="Effort Level"];
+        P5D5 [label="Conflict Signs"];
+        P5D6 [label="Interest Stability"];
+
+        P5 -> P5A -> P5B -> P5C -> P5D;
+
+        P5A -> P5A1; P5A -> P5A2; P5A -> P5A3; P5A -> P5A4;
+        P5B -> P5B1; P5B -> P5B2; P5B -> P5B3; P5B -> P5B4;
+        P5C -> P5C1; P5C -> P5C2; P5C -> P5C3; P5C -> P5C4; P5C -> P5C5;
+        P5D -> P5D1; P5D -> P5D2; P5D -> P5D3; P5D -> P5D4; P5D -> P5D5; P5D -> P5D6;
+    }
+
+    // =========================
+    // Phase 6
+    // =========================
+    subgraph cluster_p6 {
+        label="Phase 6 — Romantic Development";
+        color="#cfcfcf";
+        style="rounded";
+
+        P6 [label="Romantic Development", shape=ellipse, fillcolor="#eef4ff"];
+
+        P6A [label="6.1 Intimacy Escalation", fillcolor="#f2f8ff"];
+        P6A1 [label="Stronger Emotional Connection"];
+        P6A2 [label="Affection"];
+        P6A3 [label="Increasing Closeness"];
+        P6A4 [label="Comfort with Tension"];
+
+        P6B [label="6.2 Routine Integration", fillcolor="#f2f8ff"];
+        P6B1 [label="Regular Meetings"];
+        P6B2 [label="Weekend Plans"];
+        P6B3 [label="Daily Rhythm"];
+        P6B4 [label="Ordinary-Life Inclusion"];
+
+        P6C [label="6.3 First Friction", fillcolor="#f2f8ff"];
+        P6C1 [label="Misunderstandings"];
+        P6C2 [label="Unmet Expectations"];
+        P6C3 [label="Jealousy / Insecurity"];
+        P6C4 [label="Communication Strain"];
+
+        P6D [label="6.4 Friction Handling", fillcolor="#f2f8ff"];
+        P6D1 [label="Discuss Calmly"];
+        P6D2 [label="Set Boundaries"];
+        P6D3 [label="Accountability"];
+        P6D4 [label="Repair Attempts"];
+        P6D5 [label="Avoid Neediness / Hostility"];
+
+        P6 -> P6A -> P6B -> P6C -> P6D;
+
+        P6A -> P6A1; P6A -> P6A2; P6A -> P6A3; P6A -> P6A4;
+        P6B -> P6B1; P6B -> P6B2; P6B -> P6B3; P6B -> P6B4;
+        P6C -> P6C1; P6C -> P6C2; P6C -> P6C3; P6C -> P6C4;
+        P6D -> P6D1; P6D -> P6D2; P6D -> P6D3; P6D -> P6D4; P6D -> P6D5;
+    }
+
+    // =========================
+    // Phase 7
+    // =========================
+    subgraph cluster_p7 {
+        label="Phase 7 — Evaluation";
+        color="#cfcfcf";
+        style="rounded";
+
+        P7 [label="Evaluation", shape=ellipse, fillcolor="#eef4ff"];
+
+        P7A [label="7.1 Compatibility Evaluation", fillcolor="#f2f8ff"];
+        P7A1 [label="Values"];
+        P7A2 [label="Lifestyle"];
+        P7A3 [label="Ambitions"];
+        P7A4 [label="Temperament"];
+        P7A5 [label="Worldview"];
+        P7A6 [label="Relationship Goals"];
+
+        P7B [label="7.2 Character Evaluation", fillcolor="#f2f8ff"];
+        P7B1 [label="Honesty"];
+        P7B2 [label="Respect"];
+        P7B3 [label="Loyalty Potential"];
+        P7B4 [label="Self-Control"];
+        P7B5 [label="Empathy"];
+        P7B6 [label="Consistency"];
+
+        P7C [label="7.3 Mutual Fit Evaluation", fillcolor="#f2f8ff"];
+        P7C1 [label="Does She Admire You?"];
+        P7C2 [label="Do You Like Her?"];
+        P7C3 [label="Do Both Invest?"];
+        P7C4 [label="Peace or Stress?"];
+
+        P7D [label="7.4 Decision Point", fillcolor="#f2f8ff"];
+        P7D1 [label="Continue Casually"];
+        P7D2 [label="Become Exclusive"];
+        P7D3 [label="Slow Down"];
+        P7D4 [label="Exit Respectfully"];
+
+        P7 -> P7A -> P7B -> P7C -> P7D;
+
+        P7A -> P7A1; P7A -> P7A2; P7A -> P7A3; P7A -> P7A4; P7A -> P7A5; P7A -> P7A6;
+        P7B -> P7B1; P7B -> P7B2; P7B -> P7B3; P7B -> P7B4; P7B -> P7B5; P7B -> P7B6;
+        P7C -> P7C1; P7C -> P7C2; P7C -> P7C3; P7C -> P7C4;
+        P7D -> P7D1; P7D -> P7D2; P7D -> P7D3; P7D -> P7D4;
+    }
+
+    // =========================
+    // Phase 8
+    // =========================
+    subgraph cluster_p8 {
+        label="Phase 8 — Commitment";
+        color="#cfcfcf";
+        style="rounded";
+
+        P8 [label="Commitment", shape=ellipse, fillcolor="#eef4ff"];
+
+        P8A [label="8.1 Relationship Definition", fillcolor="#f2f8ff"];
+        P8A1 [label="Exclusivity"];
+        P8A2 [label="Labels"];
+        P8A3 [label="Expectations"];
+        P8A4 [label="Communication Norms"];
+
+        P8B [label="8.2 Social Integration", fillcolor="#f2f8ff"];
+        P8B1 [label="Meet Friends"];
+        P8B2 [label="Family Awareness"];
+        P8B3 [label="Public Couple Identity"];
+        P8B4 [label="Shared Social Routines"];
+
+        P8C [label="8.3 Stability Building", fillcolor="#f2f8ff"];
+        P8C1 [label="Routine"];
+        P8C2 [label="Trust"];
+        P8C3 [label="Conflict Management"];
+        P8C4 [label="Dependability"];
+        P8C5 [label="Emotional Security"];
+
+        P8D [label="8.4 Long-Term Planning", fillcolor="#f2f8ff"];
+        P8D1 [label="Future Goals"];
+        P8D2 [label="Location / Lifestyle"];
+        P8D3 [label="Marriage Intent"];
+        P8D4 [label="Children / Family"];
+        P8D5 [label="Financial Alignment"];
+
+        P8 -> P8A -> P8B -> P8C -> P8D;
+
+        P8A -> P8A1; P8A -> P8A2; P8A -> P8A3; P8A -> P8A4;
+        P8B -> P8B1; P8B -> P8B2; P8B -> P8B3; P8B -> P8B4;
+        P8C -> P8C1; P8C -> P8C2; P8C -> P8C3; P8C -> P8C4; P8C -> P8C5;
+        P8D -> P8D1; P8D -> P8D2; P8D -> P8D3; P8D -> P8D4; P8D -> P8D5;
+    }
+
+    // =========================
+    // Exit Cluster
+    // =========================
+    subgraph cluster_exit {
+        label="Exit Paths";
+        color="#d8c7c7";
+        style="rounded";
+
+        EX [label="Exit Conditions", shape=ellipse, fillcolor="#fff1f1"];
+
+        EX1 [label="E.1 Interest Failure", fillcolor="#fff5f5"];
+        EX1A [label="Ghosting"];
+        EX1B [label="Low Effort"];
+        EX1C [label="Lukewarm Responses"];
+        EX1D [label="Repeated Unavailability"];
+
+        EX2 [label="E.2 Compatibility Failure", fillcolor="#fff5f5"];
+        EX2A [label="Value Mismatch"];
+        EX2B [label="Life Goal Mismatch"];
+        EX2C [label="Poor Communication"];
+        EX2D [label="Different Intentions"];
+
+        EX3 [label="E.3 Character Failure", fillcolor="#fff5f5"];
+        EX3A [label="Disrespect"];
+        EX3B [label="Manipulation"];
+        EX3C [label="Dishonesty"];
+        EX3D [label="Instability"];
+        EX3E [label="Poor Treatment"];
+
+        EX -> EX1 -> EX2 -> EX3;
+
+        EX1 -> EX1A; EX1 -> EX1B; EX1 -> EX1C; EX1 -> EX1D;
+        EX2 -> EX2A; EX2 -> EX2B; EX2 -> EX2C; EX2 -> EX2D;
+        EX3 -> EX3A; EX3 -> EX3B; EX3 -> EX3C; EX3 -> EX3D; EX3 -> EX3E;
+    }
+
+    // Main flow
+    Start -> P1;
+    P1 -> P2;
+    P2 -> P3;
+    P3 -> P4;
+    P4 -> P5;
+    P5 -> P6;
+    P6 -> P7;
+    P7 -> P8 [label="continue"];
+    P8 -> Goal;
+
+    // Exit flow
+    P3 -> EX [style=dashed, label="low reciprocity"];
+    P4 -> EX [style=dashed, label="no chemistry"];
+    P6 -> EX [style=dashed, label="poor friction handling"];
+    P7 -> Exit [style=dashed, label="do not continue"];
+    EX -> Exit;
+}
