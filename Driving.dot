@@ -8,8 +8,9 @@ digraph DrivingFocusTree {
     ];
 
     node [
-        shape=box,
-        style="rounded,filled",
+        shape=polygon,
+        sides=6,
+        style="filled",
         fontname="Arial",
         fontsize=11,
         color="#9aa4b2",
@@ -27,44 +28,29 @@ digraph DrivingFocusTree {
     // =========================
     // PREREQUISITES
     // =========================
-    subgraph cluster_prereq {
-        label="Prerequisites";
-        color="#3b4252";
-        fontcolor="#d8dee9";
-        style="rounded";
+    licence [label="Get Driving Licence"];
+    car [label="Buy a Car"];
+    start [label="Begin Driving Development", shape=ellipse, fillcolor="#243447"];
 
-        licence [label="Get Driving Licence"];
-        car [label="Buy a Car"];
-        actual_start [label="Begin Driving Development", shape=ellipse, fillcolor="#243447"];
-    }
-
-    licence -> actual_start;
-    car -> actual_start;
+    licence -> start;
+    car -> start;
 
     // =========================
-    // THEORY + HANDLING REACTIVATION
+    // REACTIVATION
     // =========================
-    subgraph cluster_reactivation {
-        label="Theory & Handling Reactivation";
-        color="#3b4252";
-        fontcolor="#d8dee9";
-        style="rounded";
+    roadsigns [label="Relearn Road Signs"];
+    theory [label="Relearn Intersections\nand Theory"];
+    handling [label="Relearn Car Handling"];
+    clutch [label="Practice Clutch Control"];
+    familiar [label="Learn Car Dimensions\n& Controls"];
+    checks [label="Pre-Drive Routine"];
+    redo20 [label="Redo 20 Hours of Driving", fillcolor="#2a2f3a"];
 
-        roadsigns [label="Relearn Road Signs"];
-        theory [label="Relearn Intersections\nand Theory"];
-        handling [label="Relearn Car Handling"];
-        clutch [label="Practice Clutch Control"];
-        familiar [label="Learn Your Car\nControls, Dimensions,\nBlind Spots, Parking Feel"];
-        checks [label="Pre-Drive Routine\nFuel, Lights, Tires,\nMirrors, Seat Position"];
-        redo20 [label="Redo 20 Hours of Driving", fillcolor="#2a2f3a"];
-    }
-
-    actual_start -> roadsigns;
-    actual_start -> theory;
-    actual_start -> handling;
+    start -> roadsigns;
+    start -> theory;
+    start -> handling;
 
     handling -> clutch;
-    handling -> familiar;
     clutch -> familiar;
 
     roadsigns -> checks;
@@ -77,100 +63,106 @@ digraph DrivingFocusTree {
     // =========================
     // FOUNDATIONS
     // =========================
-    subgraph cluster_foundation {
-        label="Driving Foundations";
-        color="#3b4252";
-        fontcolor="#d8dee9";
-        style="rounded";
-
-        short_routes [label="Drive Familiar Short Routes"];
-        city_basic [label="Basic City Driving\nTurns, Lanes, Traffic Lights"];
-        parking_basic [label="Basic Parking\nReverse, Parallel, Tight Spots"];
-        weather_basic [label="Drive in Light Rain / Night"];
-    }
+    short_routes [label="Drive Familiar Routes"];
+    city_basic [label="Basic City Driving"];
+    parking_basic [label="Basic Parking"];
+    weather_basic [label="Light Rain / Night Driving"];
 
     redo20 -> short_routes;
-    redo20 -> parking_basic;
     redo20 -> city_basic;
+    redo20 -> parking_basic;
 
     short_routes -> city_basic;
     short_routes -> parking_basic;
+
     city_basic -> weather_basic;
     parking_basic -> weather_basic;
 
     // =========================
     // INDEPENDENCE
     // =========================
-    subgraph cluster_independence {
-        label="Independent Driving";
-        color="#3b4252";
-        fontcolor="#d8dee9";
-        style="rounded";
+    solo [label="Drive Solo"];
+    navigation [label="Use Navigation"];
+    traffic [label="Handle Dense Traffic"];
+    hill [label="Hill Starts"];
+    routine [label="Driving Routine"];
 
-        solo_errands [label="Drive Solo for Errands"];
-        navigation [label="Drive Using Navigation\nto Unfamiliar Places"];
-        traffic_dense [label="Handle Dense Traffic\nConfidently"];
-        hill_start [label="Master Hill Starts\nand Tight Maneuvering"];
-        commute [label="Establish Weekly Driving Routine"];
-    }
-
-    weather_basic -> solo_errands;
+    weather_basic -> solo;
     weather_basic -> navigation;
-    city_basic -> traffic_dense;
-    parking_basic -> hill_start;
+    city_basic -> traffic;
+    parking_basic -> hill;
 
-    solo_errands -> commute;
-    navigation -> commute;
-    traffic_dense -> commute;
-    hill_start -> commute;
-
-    // =========================
-    // MILEAGE BRANCH
-    // =========================
-    subgraph cluster_mileage {
-        label="Mileage Accumulation";
-        color="#3b4252";
-        fontcolor="#d8dee9";
-        style="rounded";
-
-        km_100 [label="Drive 100 Kilometers"];
-        km_500 [label="Drive 500 Kilometers"];
-        km_1000 [label="Drive 1000 Kilometers"];
-        km_2500 [label="Drive 2500 Kilometers"];
-        km_5000 [label="Drive 5000 Kilometers", shape=doubleoctagon, fillcolor="#2d3e2f"];
-    }
-
-    commute -> km_100;
-    km_100 -> km_500;
-    km_500 -> km_1000;
-    km_1000 -> km_2500;
-    km_2500 -> km_5000;
+    solo -> routine;
+    navigation -> routine;
+    traffic -> routine;
+    hill -> routine;
 
     // =========================
-    // COMPETENCE BRANCH
+    // MILEAGE
     // =========================
-    subgraph cluster_mastery {
-        label="Competence & Resilience";
-        color="#3b4252";
-        fontcolor="#d8dee9";
-        style="rounded";
+    km100 [label="100 km"];
+    km500 [label="500 km"];
+    km1000 [label="1000 km"];
+    km2500 [label="2500 km"];
+    km5000 [label="5000 km", shape=doubleoctagon, fillcolor="#2d3e2f"];
 
-        highway [label="Drive on Highway / Open Road"];
-        bad_weather [label="Drive in Heavy Rain / Poor Conditions"];
-        long_trip [label="Complete a Long-Distance Trip"];
-        maintenance [label="Understand Basic Car Maintenance"];
-        incidents [label="Handle Minor Incidents\nFlat Tire, Battery, Warning Lights"];
-        confident_driver [label="Confident Independent Driver", shape=doubleoctagon, fillcolor="#243b55"];
-    }
+    routine -> km100;
+    km100 -> km500;
+    km500 -> km1000;
+    km1000 -> km2500;
+    km2500 -> km5000;
 
-    commute -> highway;
-    commute -> maintenance;
-    km_500 -> bad_weather;
-    km_1000 -> long_trip;
+    // =========================
+    // LONG DISTANCE REQUIREMENTS
+    // =========================
+    lt_distance [label="150–300 km"];
+    lt_duration [label="2–5 Hours"];
+    lt_area [label="Outside Familiar Area"];
+    lt_env [label="City + Highway"];
+    lt_nav [label="Independent Navigation"];
+    lt_nohelp [label="No Coaching"];
+    lt_logistics [label="Fuel Planning"];
+    lt_control [label="No Panic / Full Control"];
+
+    long_trip [label="Long-Distance Trip", shape=doubleoctagon, fillcolor="#2d3e2f"];
+
+    lt_distance -> long_trip;
+    lt_duration -> long_trip;
+    lt_area -> long_trip;
+    lt_env -> long_trip;
+    lt_nav -> long_trip;
+    lt_nohelp -> long_trip;
+    lt_logistics -> long_trip;
+    lt_control -> long_trip;
+
+    // dependencies feeding requirements
+    km1000 -> lt_distance;
+    routine -> lt_duration;
+    navigation -> lt_area;
+    highway [label="Drive Highway"];
+    highway -> lt_env;
+    navigation -> lt_nav;
+    solo -> lt_nohelp;
+    routine -> lt_logistics;
+    traffic -> lt_control;
+
+    // =========================
+    // MASTERY
+    // =========================
+    bad_weather [label="Heavy Rain Driving"];
+    maintenance [label="Car Maintenance"];
+    incidents [label="Handle Incidents"];
+
+    confident [label="Confident Driver", shape=doubleoctagon, fillcolor="#243b55"];
+
+    routine -> highway;
+    routine -> maintenance;
+
+    km500 -> bad_weather;
     maintenance -> incidents;
-    highway -> long_trip;
-    bad_weather -> confident_driver;
-    long_trip -> confident_driver;
-    incidents -> confident_driver;
-    km_5000 -> confident_driver;
+
+    long_trip -> confident;
+    km5000 -> confident;
+    bad_weather -> confident;
+    incidents -> confident;
 }
