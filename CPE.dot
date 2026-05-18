@@ -26,13 +26,8 @@ digraph CPE_Focus_Tree {
         arrowsize=0.8
     ];
 
-    // =========================
-    // ROOT / META BRANCH
-    // =========================
-
     CPE [
-        label="CPE CAMPAIGN\nCambridge C2 Proficiency\nExam: 20 June 2026\nTotal: 112h / 500 BAM",
-        shape=box,
+        label="CPE CAMPAIGN\nCambridge C2 Proficiency\nExam: 20 June 2026\nTotal: 112h",
         fillcolor="#3a2f1b",
         fontsize=14,
         penwidth=3
@@ -51,32 +46,28 @@ digraph CPE_Focus_Tree {
     CPE -> Diagnostic;
     Diagnostic -> ErrorLog;
 
-    // =========================
-    // MAIN SCORE BRANCHES
-    // =========================
-
     ReadingCore [
-        label="READING BRANCH\n18h / 100 BAM",
+        label="READING BRANCH\n18h",
         fillcolor="#263a2a"
     ];
 
     UseCore [
-        label="USE OF ENGLISH BRANCH\n28h / 100 BAM",
+        label="USE OF ENGLISH BRANCH\n28h",
         fillcolor="#3a2636"
     ];
 
     WritingCore [
-        label="WRITING BRANCH\n24h / 100 BAM",
+        label="WRITING BRANCH\n24h",
         fillcolor="#3a3326"
     ];
 
     ListeningCore [
-        label="LISTENING BRANCH\n16h / 100 BAM",
+        label="LISTENING BRANCH\n16h",
         fillcolor="#26343a"
     ];
 
     SpeakingCore [
-        label="SPEAKING BRANCH\n14h / 100 BAM",
+        label="SPEAKING BRANCH\n14h",
         fillcolor="#32263a"
     ];
 
@@ -91,23 +82,23 @@ digraph CPE_Focus_Tree {
     // =========================
 
     R1 [
-        label="R1 Multiple-Choice Cloze\n3h / 18 BAM\nCollocations + Idioms",
+        label="R1 Multiple-Choice Cloze\n3h\nCollocations + Idioms",
         fillcolor="#1f3324"
     ];
 
     R5 [
-        label="R5 Multiple Choice Reading\n5h / 27 BAM\nTone + Attitude + Inference",
+        label="R5 Multiple Choice Reading\n5h\nTone + Attitude + Inference",
         fillcolor="#1f3324"
     ];
 
     R6 [
-        label="R6 Gapped Text\n6h / 32 BAM\nCohesion + Structure",
+        label="R6 Gapped Text\n6h\nCohesion + Structure",
         fillcolor="#41582d",
         penwidth=3
     ];
 
     R7 [
-        label="R7 Multiple Matching\n4h / 23 BAM\nDetail + Opinion Matching",
+        label="R7 Multiple Matching\n4h\nDetail + Opinion Matching",
         fillcolor="#1f3324"
     ];
 
@@ -121,17 +112,17 @@ digraph CPE_Focus_Tree {
     // =========================
 
     U2 [
-        label="U2 Open Cloze\n7h / 29 BAM\nGrammar Precision",
+        label="U2 Open Cloze\n7h\nGrammar Precision",
         fillcolor="#331f2e"
     ];
 
     U3 [
-        label="U3 Word Formation\n7h / 29 BAM\nAffixes + Word Families",
+        label="U3 Word Formation\n7h\nAffixes + Word Families",
         fillcolor="#331f2e"
     ];
 
     U4 [
-        label="U4 Key Word Transformations\n14h / 43 BAM\nBOSS NODE\nGrammar + Paraphrase",
+        label="U4 Key Word Transformations\n14h\nBOSS NODE\nGrammar + Paraphrase",
         fillcolor="#5a2d4d",
         penwidth=4
     ];
@@ -146,13 +137,13 @@ digraph CPE_Focus_Tree {
     // =========================
 
     W1 [
-        label="W1 Compulsory Essay\n14h / 50 BAM\nArgument + Evaluation",
+        label="W1 Compulsory Essay\n14h\nArgument + Evaluation",
         fillcolor="#5a4a2d",
         penwidth=3
     ];
 
     W2 [
-        label="W2 Optional Task\n10h / 50 BAM\nArticle / Report / Review / Letter",
+        label="W2 Optional Task\n10h\nArticle / Report / Review / Letter",
         fillcolor="#332c1f"
     ];
 
@@ -164,22 +155,22 @@ digraph CPE_Focus_Tree {
     // =========================
 
     L1 [
-        label="L1 Multiple Choice\n3h / 20 BAM\nGist + Purpose",
+        label="L1 Multiple Choice\n3h\nGist + Purpose",
         fillcolor="#1f2e33"
     ];
 
     L2 [
-        label="L2 Sentence Completion\n5h / 30 BAM\nSpecific Information",
+        label="L2 Sentence Completion\n5h\nSpecific Information",
         fillcolor="#1f2e33"
     ];
 
     L3 [
-        label="L3 Multiple Choice Interaction\n3h / 17 BAM\nOpinion + Detail",
+        label="L3 Multiple Choice Interaction\n3h\nOpinion + Detail",
         fillcolor="#1f2e33"
     ];
 
     L4 [
-        label="L4 Multiple Matching\n5h / 33 BAM\nSpeaker Attitude",
+        label="L4 Multiple Matching\n5h\nSpeaker Attitude",
         fillcolor="#2d4e5a",
         penwidth=3
     ];
@@ -194,17 +185,17 @@ digraph CPE_Focus_Tree {
     // =========================
 
     S1 [
-        label="S1 Interview\n2h / 13 BAM\nPersonal Fluency",
+        label="S1 Interview\n2h\nPersonal Fluency",
         fillcolor="#2d1f33"
     ];
 
     S2 [
-        label="S2 Collaborative Task\n5h / 25 BAM\nNegotiation + Agreement",
+        label="S2 Collaborative Task\n5h\nNegotiation + Agreement",
         fillcolor="#2d1f33"
     ];
 
     S3 [
-        label="S3 Long Turn + Discussion\n7h / 62 BAM\nSymbolic Capital Node",
+        label="S3 Long Turn + Discussion\n7h\nSymbolic Capital Node",
         fillcolor="#4b2d5a",
         penwidth=3
     ];
@@ -229,12 +220,10 @@ digraph CPE_Focus_Tree {
 
     FinalReview [
         label="FINAL REVIEW\nWeakness Closure\nExam Strategy",
-        shape=box,
         fillcolor="#3a2f1b",
         penwidth=3
     ];
 
-    // Branch convergence
     R7 -> Mock1;
     U4 -> Mock1;
     W2 -> Mock1;
@@ -243,10 +232,6 @@ digraph CPE_Focus_Tree {
 
     Mock1 -> Mock2;
     Mock2 -> FinalReview;
-
-    // =========================
-    // RANKING FOR VISUAL BALANCE
-    // =========================
 
     { rank=same; ReadingCore; UseCore; WritingCore; ListeningCore; SpeakingCore; }
     { rank=same; R1; U2; W1; L1; S1; }
