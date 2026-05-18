@@ -1,0 +1,256 @@
+digraph CPE_Focus_Tree {
+    graph [
+        rankdir=TB,
+        splines=ortho,
+        nodesep=0.55,
+        ranksep=0.85,
+        bgcolor="#0f1117",
+        pad=0.4
+    ];
+
+    node [
+        shape=box,
+        style="rounded,filled",
+        fontname="Arial",
+        fontsize=11,
+        margin="0.14,0.09",
+        color="#c9aa71",
+        penwidth=2,
+        fillcolor="#1f2430",
+        fontcolor="#f4e8c1"
+    ];
+
+    edge [
+        color="#c9aa71",
+        penwidth=2,
+        arrowsize=0.8
+    ];
+
+    // =========================
+    // ROOT / META BRANCH
+    // =========================
+
+    CPE [
+        label="CPE CAMPAIGN\nCambridge C2 Proficiency\nExam: 20 June 2026\nTotal: 112h / 500 BAM",
+        shape=box,
+        fillcolor="#3a2f1b",
+        fontsize=14,
+        penwidth=3
+    ];
+
+    Diagnostic [
+        label="Diagnostic Mock Exam\n4h\nUnlocks Weakness Map",
+        fillcolor="#243247"
+    ];
+
+    ErrorLog [
+        label="Error Log System\n2h\nTrack Repeated Mistakes",
+        fillcolor="#243247"
+    ];
+
+    CPE -> Diagnostic;
+    Diagnostic -> ErrorLog;
+
+    // =========================
+    // MAIN SCORE BRANCHES
+    // =========================
+
+    ReadingCore [
+        label="READING BRANCH\n18h / 100 BAM",
+        fillcolor="#263a2a"
+    ];
+
+    UseCore [
+        label="USE OF ENGLISH BRANCH\n28h / 100 BAM",
+        fillcolor="#3a2636"
+    ];
+
+    WritingCore [
+        label="WRITING BRANCH\n24h / 100 BAM",
+        fillcolor="#3a3326"
+    ];
+
+    ListeningCore [
+        label="LISTENING BRANCH\n16h / 100 BAM",
+        fillcolor="#26343a"
+    ];
+
+    SpeakingCore [
+        label="SPEAKING BRANCH\n14h / 100 BAM",
+        fillcolor="#32263a"
+    ];
+
+    ErrorLog -> ReadingCore;
+    ErrorLog -> UseCore;
+    ErrorLog -> WritingCore;
+    ErrorLog -> ListeningCore;
+    ErrorLog -> SpeakingCore;
+
+    // =========================
+    // READING NODES
+    // =========================
+
+    R1 [
+        label="R1 Multiple-Choice Cloze\n3h / 18 BAM\nCollocations + Idioms",
+        fillcolor="#1f3324"
+    ];
+
+    R5 [
+        label="R5 Multiple Choice Reading\n5h / 27 BAM\nTone + Attitude + Inference",
+        fillcolor="#1f3324"
+    ];
+
+    R6 [
+        label="R6 Gapped Text\n6h / 32 BAM\nCohesion + Structure",
+        fillcolor="#41582d",
+        penwidth=3
+    ];
+
+    R7 [
+        label="R7 Multiple Matching\n4h / 23 BAM\nDetail + Opinion Matching",
+        fillcolor="#1f3324"
+    ];
+
+    ReadingCore -> R1;
+    ReadingCore -> R5;
+    R5 -> R6;
+    R6 -> R7;
+
+    // =========================
+    // USE OF ENGLISH NODES
+    // =========================
+
+    U2 [
+        label="U2 Open Cloze\n7h / 29 BAM\nGrammar Precision",
+        fillcolor="#331f2e"
+    ];
+
+    U3 [
+        label="U3 Word Formation\n7h / 29 BAM\nAffixes + Word Families",
+        fillcolor="#331f2e"
+    ];
+
+    U4 [
+        label="U4 Key Word Transformations\n14h / 43 BAM\nBOSS NODE\nGrammar + Paraphrase",
+        fillcolor="#5a2d4d",
+        penwidth=4
+    ];
+
+    UseCore -> U2;
+    UseCore -> U3;
+    U2 -> U4;
+    U3 -> U4;
+
+    // =========================
+    // WRITING NODES
+    // =========================
+
+    W1 [
+        label="W1 Compulsory Essay\n14h / 50 BAM\nArgument + Evaluation",
+        fillcolor="#5a4a2d",
+        penwidth=3
+    ];
+
+    W2 [
+        label="W2 Optional Task\n10h / 50 BAM\nArticle / Report / Review / Letter",
+        fillcolor="#332c1f"
+    ];
+
+    WritingCore -> W1;
+    W1 -> W2;
+
+    // =========================
+    // LISTENING NODES
+    // =========================
+
+    L1 [
+        label="L1 Multiple Choice\n3h / 20 BAM\nGist + Purpose",
+        fillcolor="#1f2e33"
+    ];
+
+    L2 [
+        label="L2 Sentence Completion\n5h / 30 BAM\nSpecific Information",
+        fillcolor="#1f2e33"
+    ];
+
+    L3 [
+        label="L3 Multiple Choice Interaction\n3h / 17 BAM\nOpinion + Detail",
+        fillcolor="#1f2e33"
+    ];
+
+    L4 [
+        label="L4 Multiple Matching\n5h / 33 BAM\nSpeaker Attitude",
+        fillcolor="#2d4e5a",
+        penwidth=3
+    ];
+
+    ListeningCore -> L1;
+    L1 -> L2;
+    L2 -> L3;
+    L3 -> L4;
+
+    // =========================
+    // SPEAKING NODES
+    // =========================
+
+    S1 [
+        label="S1 Interview\n2h / 13 BAM\nPersonal Fluency",
+        fillcolor="#2d1f33"
+    ];
+
+    S2 [
+        label="S2 Collaborative Task\n5h / 25 BAM\nNegotiation + Agreement",
+        fillcolor="#2d1f33"
+    ];
+
+    S3 [
+        label="S3 Long Turn + Discussion\n7h / 62 BAM\nSymbolic Capital Node",
+        fillcolor="#4b2d5a",
+        penwidth=3
+    ];
+
+    SpeakingCore -> S1;
+    S1 -> S2;
+    S2 -> S3;
+
+    // =========================
+    // FINAL INTEGRATION
+    // =========================
+
+    Mock1 [
+        label="Full Mock Exam I\n3h\nTimed Simulation",
+        fillcolor="#243247"
+    ];
+
+    Mock2 [
+        label="Full Mock Exam II\n3h\nFinal Readiness Check",
+        fillcolor="#243247"
+    ];
+
+    FinalReview [
+        label="FINAL REVIEW\nWeakness Closure\nExam Strategy",
+        shape=box,
+        fillcolor="#3a2f1b",
+        penwidth=3
+    ];
+
+    // Branch convergence
+    R7 -> Mock1;
+    U4 -> Mock1;
+    W2 -> Mock1;
+    L4 -> Mock1;
+    S3 -> Mock1;
+
+    Mock1 -> Mock2;
+    Mock2 -> FinalReview;
+
+    // =========================
+    // RANKING FOR VISUAL BALANCE
+    // =========================
+
+    { rank=same; ReadingCore; UseCore; WritingCore; ListeningCore; SpeakingCore; }
+    { rank=same; R1; U2; W1; L1; S1; }
+    { rank=same; R5; U3; W2; L2; S2; }
+    { rank=same; R6; U4; L3; S3; }
+    { rank=same; R7; L4; }
+}
