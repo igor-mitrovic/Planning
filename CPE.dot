@@ -1,4 +1,4 @@
-digraph CPE_Focus_Tree {
+digraph CPE_Official_Branch_Focus_Tree {
     graph [
         rankdir=TB,
         splines=ortho,
@@ -26,6 +26,10 @@ digraph CPE_Focus_Tree {
         arrowsize=0.8
     ];
 
+    // =========================
+    // ROOT / META
+    // =========================
+
     CPE [
         label="CPE CAMPAIGN\nCambridge C2 Proficiency\nExam: 20 June 2026\nTotal: 112h",
         fillcolor="#3a2f1b",
@@ -34,41 +38,50 @@ digraph CPE_Focus_Tree {
     ];
 
     Diagnostic [
-        label="Diagnostic Mock Exam\n4h\nUnlocks Weakness Map",
+        label="Diagnostic Mock Exam\n4h\nFind Weak Branches",
         fillcolor="#243247"
     ];
 
     ErrorLog [
-        label="Error Log System\n2h\nTrack Repeated Mistakes",
+        label="Error Log System\n6h\nTrack + Repair Mistakes",
         fillcolor="#243247"
     ];
 
     CPE -> Diagnostic;
     Diagnostic -> ErrorLog;
 
+    // =========================
+    // OFFICIAL SCORE BRANCHES
+    // =========================
+
     ReadingCore [
         label="READING BRANCH\n18h",
-        fillcolor="#263a2a"
+        fillcolor="#263a2a",
+        penwidth=3
     ];
 
     UseCore [
-        label="USE OF ENGLISH BRANCH\n28h",
-        fillcolor="#3a2636"
+        label="USE OF ENGLISH BRANCH\n28h + 23h Playlist",
+        fillcolor="#3a2636",
+        penwidth=3
     ];
 
     WritingCore [
         label="WRITING BRANCH\n24h",
-        fillcolor="#3a3326"
+        fillcolor="#3a3326",
+        penwidth=3
     ];
 
     ListeningCore [
         label="LISTENING BRANCH\n16h",
-        fillcolor="#26343a"
+        fillcolor="#26343a",
+        penwidth=3
     ];
 
     SpeakingCore [
         label="SPEAKING BRANCH\n14h",
-        fillcolor="#32263a"
+        fillcolor="#32263a",
+        penwidth=3
     ];
 
     ErrorLog -> ReadingCore;
@@ -78,131 +91,142 @@ digraph CPE_Focus_Tree {
     ErrorLog -> SpeakingCore;
 
     // =========================
-    // READING NODES
+    // READING BRANCH
     // =========================
 
-    R1 [
-        label="R1 Multiple-Choice Cloze\n3h\nCollocations + Idioms",
+    SBReading [
+        label="Objective Proficiency\nReading Units\n10h",
         fillcolor="#1f3324"
     ];
 
-    R5 [
-        label="R5 Multiple Choice Reading\n5h\nTone + Attitude + Inference",
+    WBReading [
+        label="Workbook Reading Practice\n5h",
         fillcolor="#1f3324"
     ];
 
     R6 [
-        label="R6 Gapped Text\n6h\nCohesion + Structure",
+        label="Gapped Text Drill\n3h\nCohesion + Structure",
         fillcolor="#41582d",
         penwidth=3
     ];
 
-    R7 [
-        label="R7 Multiple Matching\n4h\nDetail + Opinion Matching",
-        fillcolor="#1f3324"
-    ];
-
-    ReadingCore -> R1;
-    ReadingCore -> R5;
-    R5 -> R6;
-    R6 -> R7;
+    ReadingCore -> SBReading;
+    SBReading -> WBReading;
+    WBReading -> R6;
 
     // =========================
-    // USE OF ENGLISH NODES
+    // USE OF ENGLISH BRANCH
     // =========================
 
-    U2 [
-        label="U2 Open Cloze\n7h\nGrammar Precision",
+    SBUoE [
+        label="Objective Proficiency\nUse of English Units\n6h",
         fillcolor="#331f2e"
     ];
 
-    U3 [
-        label="U3 Word Formation\n7h\nAffixes + Word Families",
+    WBUoE [
+        label="Workbook Use of English\n8h",
         fillcolor="#331f2e"
     ];
 
-    U4 [
-        label="U4 Key Word Transformations\n14h\nBOSS NODE\nGrammar + Paraphrase",
+    PlaylistPass1 [
+        label="Use of English Playlist\nPass I\n11.5h",
+        fillcolor="#331f2e"
+    ];
+
+    PlaylistPass2 [
+        label="Use of English Playlist\nPass II\n11.5h",
+        fillcolor="#331f2e"
+    ];
+
+    Transformations [
+        label="Key Word Transformations\n8h\nBOSS NODE",
         fillcolor="#5a2d4d",
         penwidth=4
     ];
 
-    UseCore -> U2;
-    UseCore -> U3;
-    U2 -> U4;
-    U3 -> U4;
+    UseCore -> SBUoE;
+    SBUoE -> WBUoE;
+    WBUoE -> PlaylistPass1;
+    PlaylistPass1 -> PlaylistPass2;
+    PlaylistPass2 -> Transformations;
 
     // =========================
-    // WRITING NODES
+    // WRITING BRANCH
     // =========================
 
-    W1 [
-        label="W1 Compulsory Essay\n14h\nArgument + Evaluation",
+    SBWriting [
+        label="Objective Proficiency\nWriting Units\n10h",
+        fillcolor="#332c1f"
+    ];
+
+    WBWriting [
+        label="Workbook Writing Practice\n5h",
+        fillcolor="#332c1f"
+    ];
+
+    EssayDrills [
+        label="Compulsory Essay Drills\n6h\nPart 1 Priority",
         fillcolor="#5a4a2d",
         penwidth=3
     ];
 
-    W2 [
-        label="W2 Optional Task\n10h\nArticle / Report / Review / Letter",
+    OptionalWriting [
+        label="Optional Task Drills\n3h\nArticle / Report / Review",
         fillcolor="#332c1f"
     ];
 
-    WritingCore -> W1;
-    W1 -> W2;
+    WritingCore -> SBWriting;
+    SBWriting -> WBWriting;
+    WBWriting -> EssayDrills;
+    EssayDrills -> OptionalWriting;
 
     // =========================
-    // LISTENING NODES
+    // LISTENING BRANCH
     // =========================
 
-    L1 [
-        label="L1 Multiple Choice\n3h\nGist + Purpose",
+    SBListening [
+        label="Objective Proficiency\nListening Units\n8h",
         fillcolor="#1f2e33"
     ];
 
-    L2 [
-        label="L2 Sentence Completion\n5h\nSpecific Information",
-        fillcolor="#1f2e33"
-    ];
-
-    L3 [
-        label="L3 Multiple Choice Interaction\n3h\nOpinion + Detail",
+    WBListening [
+        label="Workbook Listening Practice\n4h",
         fillcolor="#1f2e33"
     ];
 
     L4 [
-        label="L4 Multiple Matching\n5h\nSpeaker Attitude",
+        label="Multiple Matching Drill\n4h\nSpeaker Attitude",
         fillcolor="#2d4e5a",
         penwidth=3
     ];
 
-    ListeningCore -> L1;
-    L1 -> L2;
-    L2 -> L3;
-    L3 -> L4;
+    ListeningCore -> SBListening;
+    SBListening -> WBListening;
+    WBListening -> L4;
 
     // =========================
-    // SPEAKING NODES
+    // SPEAKING BRANCH
     // =========================
 
-    S1 [
-        label="S1 Interview\n2h\nPersonal Fluency",
+    SBSpeaking [
+        label="Objective Proficiency\nSpeaking Tasks\n6h",
         fillcolor="#2d1f33"
     ];
 
-    S2 [
-        label="S2 Collaborative Task\n5h\nNegotiation + Agreement",
+    WBSpeaking [
+        label="Workbook Speaking Support\n3h",
         fillcolor="#2d1f33"
     ];
 
-    S3 [
-        label="S3 Long Turn + Discussion\n7h\nSymbolic Capital Node",
+    LongTurn [
+        label="Long Turn + Discussion\n5h\nSymbolic Capital Node",
         fillcolor="#4b2d5a",
         penwidth=3
     ];
 
-    SpeakingCore -> S1;
-    S1 -> S2;
-    S2 -> S3;
+    SpeakingCore -> SBSpeaking;
+    SBSpeaking -> WBSpeaking;
+    WBSpeaking -> LongTurn;
 
     // =========================
     // FINAL INTEGRATION
@@ -213,29 +237,39 @@ digraph CPE_Focus_Tree {
         fillcolor="#243247"
     ];
 
+    Repair [
+        label="Weakness Repair Cycle\n3h\nFix Top 10 Errors",
+        fillcolor="#243247"
+    ];
+
     Mock2 [
         label="Full Mock Exam II\n3h\nFinal Readiness Check",
         fillcolor="#243247"
     ];
 
     FinalReview [
-        label="FINAL REVIEW\nWeakness Closure\nExam Strategy",
+        label="FINAL REVIEW\nExam Strategy\nLight Revision",
         fillcolor="#3a2f1b",
         penwidth=3
     ];
 
-    R7 -> Mock1;
-    U4 -> Mock1;
-    W2 -> Mock1;
+    R6 -> Mock1;
+    Transformations -> Mock1;
+    OptionalWriting -> Mock1;
     L4 -> Mock1;
-    S3 -> Mock1;
+    LongTurn -> Mock1;
 
-    Mock1 -> Mock2;
+    Mock1 -> Repair;
+    Repair -> Mock2;
     Mock2 -> FinalReview;
 
+    // =========================
+    // RANKING FOR VISUAL BALANCE
+    // =========================
+
     { rank=same; ReadingCore; UseCore; WritingCore; ListeningCore; SpeakingCore; }
-    { rank=same; R1; U2; W1; L1; S1; }
-    { rank=same; R5; U3; W2; L2; S2; }
-    { rank=same; R6; U4; L3; S3; }
-    { rank=same; R7; L4; }
+    { rank=same; SBReading; SBUoE; SBWriting; SBListening; SBSpeaking; }
+    { rank=same; WBReading; WBUoE; WBWriting; WBListening; WBSpeaking; }
+    { rank=same; R6; PlaylistPass1; EssayDrills; L4; LongTurn; }
+    { rank=same; PlaylistPass2; OptionalWriting; }
 }
