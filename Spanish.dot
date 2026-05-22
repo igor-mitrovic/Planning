@@ -1,0 +1,348 @@
+digraph Spanish_Language_Focus_Tree {
+    rankdir=TB;
+    bgcolor="#f8f4e8";
+
+    node [
+        shape=box,
+        style="rounded,filled",
+        fontname="Arial",
+        fontsize=11,
+        fillcolor="#fff7dc",
+        color="#7a5c1e",
+        penwidth=1.5
+    ];
+
+    edge [
+        color="#5c4520",
+        penwidth=1.3,
+        arrowsize=0.8
+    ];
+
+    // ROOT
+    Spanish_Strategy [
+        label="Spanish Language Strategy\nDefine Purpose, Level Target, Timeline",
+        fillcolor="#f2d27c",
+        shape=box
+    ];
+
+    // META BRANCH
+    Meta_Language_Learning [
+        label="Meta Language Learning\nLearn How Languages Are Acquired"
+    ];
+
+    CEFR_Map [
+        label="CEFR Map\nUnderstand A1–C2 Requirements"
+    ];
+
+    Study_System [
+        label="Study System\nDaily Routine + Weekly Review"
+    ];
+
+    Spanish_Strategy -> Meta_Language_Learning;
+    Meta_Language_Learning -> CEFR_Map;
+    CEFR_Map -> Study_System;
+
+    // FOUNDATION
+    A1_Core [
+        label="A1 Core\nAlphabet, Pronunciation, Survival Phrases",
+        fillcolor="#e8f1ff"
+    ];
+
+    Basic_Grammar [
+        label="Basic Grammar\nGender, Articles, Present Tense"
+    ];
+
+    Core_Vocabulary_1000 [
+        label="Core Vocabulary I\nFirst 1,000 Words"
+    ];
+
+    Listening_Starter [
+        label="Listening Starter\nSlow Spanish + Beginner Dialogues"
+    ];
+
+    Speaking_Activation [
+        label="Speaking Activation\nBasic Self-Introduction"
+    ];
+
+    Study_System -> A1_Core;
+    A1_Core -> Basic_Grammar;
+    A1_Core -> Core_Vocabulary_1000;
+    A1_Core -> Listening_Starter;
+    Basic_Grammar -> Speaking_Activation;
+    Core_Vocabulary_1000 -> Speaking_Activation;
+    Listening_Starter -> Speaking_Activation;
+
+    // A2 BRANCH
+    A2_Expansion [
+        label="A2 Expansion\nDaily Life Communication",
+        fillcolor="#d8ecff"
+    ];
+
+    Past_Tenses_Intro [
+        label="Past Tenses Intro\nPretérito Perfecto / Indefinido"
+    ];
+
+    Vocabulary_3000 [
+        label="Core Vocabulary II\nReach 3,000 Words"
+    ];
+
+    Reading_Graded [
+        label="Graded Readers\nSimple Stories + Dialogues"
+    ];
+
+    Travel_Spanish [
+        label="Travel Spanish\nTransport, Hotels, Food, Directions"
+    ];
+
+    Speaking_Activation -> A2_Expansion;
+    A2_Expansion -> Past_Tenses_Intro;
+    A2_Expansion -> Vocabulary_3000;
+    A2_Expansion -> Reading_Graded;
+    A2_Expansion -> Travel_Spanish;
+
+    // B1 BRANCH
+    B1_Independence [
+        label="B1 Independence\nHandle Most Everyday Situations",
+        fillcolor="#c8e5ff"
+    ];
+
+    Grammar_Systematization [
+        label="Grammar Systematization\nAll Major Tenses + Pronouns"
+    ];
+
+    Conversation_Habit [
+        label="Conversation Habit\n2–3 Speaking Sessions / Week"
+    ];
+
+    Media_Immersion_I [
+        label="Media Immersion I\nYouTube, Podcasts, Simple News"
+    ];
+
+    Writing_Journal [
+        label="Spanish Journal\n100–150 Words Daily"
+    ];
+
+    Past_Tenses_Intro -> B1_Independence;
+    Vocabulary_3000 -> B1_Independence;
+    Reading_Graded -> B1_Independence;
+
+    B1_Independence -> Grammar_Systematization;
+    B1_Independence -> Conversation_Habit;
+    B1_Independence -> Media_Immersion_I;
+    B1_Independence -> Writing_Journal;
+
+    // B2 BRANCH
+    B2_Functional_Fluency [
+        label="B2 Functional Fluency\nWork, Debate, Complex Topics",
+        fillcolor="#b4dcff"
+    ];
+
+    Advanced_Grammar [
+        label="Advanced Grammar\nSubjunctive, Conditionals, Nuance"
+    ];
+
+    Argumentation [
+        label="Argumentation in Spanish\nOpinions, Debate, Explanation"
+    ];
+
+    Professional_Spanish [
+        label="Professional Spanish\nWorkplace, Tech, Business Vocabulary"
+    ];
+
+    Native_Content_I [
+        label="Native Content I\nSeries, Interviews, Essays"
+    ];
+
+    Conversation_Habit -> B2_Functional_Fluency;
+    Grammar_Systematization -> B2_Functional_Fluency;
+    Media_Immersion_I -> B2_Functional_Fluency;
+    Writing_Journal -> B2_Functional_Fluency;
+
+    B2_Functional_Fluency -> Advanced_Grammar;
+    B2_Functional_Fluency -> Argumentation;
+    B2_Functional_Fluency -> Professional_Spanish;
+    B2_Functional_Fluency -> Native_Content_I;
+
+    // C1 BRANCH
+    C1_Cultural_Integration [
+        label="C1 Cultural Integration\nThink, Read, and Argue in Spanish",
+        fillcolor="#d5c8ff"
+    ];
+
+    Literature_Spanish [
+        label="Spanish Literature\nCervantes, Borges, García Márquez"
+    ];
+
+    History_Culture [
+        label="Hispanic World Culture\nSpain + Latin America"
+    ];
+
+    Register_Control [
+        label="Register Control\nFormal, Informal, Academic, Professional"
+    ];
+
+    Long_Form_Output [
+        label="Long-Form Output\nEssays, Presentations, Reports"
+    ];
+
+    Advanced_Grammar -> C1_Cultural_Integration;
+    Argumentation -> C1_Cultural_Integration;
+    Native_Content_I -> C1_Cultural_Integration;
+
+    C1_Cultural_Integration -> Literature_Spanish;
+    C1_Cultural_Integration -> History_Culture;
+    C1_Cultural_Integration -> Register_Control;
+    C1_Cultural_Integration -> Long_Form_Output;
+
+    // C2 BRANCH
+    C2_Master_Status [
+        label="C2 Master Status\nNear-Native Command",
+        fillcolor="#c2b0ff"
+    ];
+
+    Native_Level_Listening [
+        label="Native-Level Listening\nAccents, Speed, Slang, Humor"
+    ];
+
+    Rhetorical_Mastership [
+        label="Rhetorical Mastership\nPersuasion, Style, Precision"
+    ];
+
+    Translation_Ability [
+        label="Translation Ability\nEnglish/BSC ↔ Spanish"
+    ];
+
+    Symbolic_Capital_Spanish [
+        label="Symbolic Capital\nRecognized as Multilingual and Cultured",
+        fillcolor="#f0c27b"
+    ];
+
+    Literature_Spanish -> C2_Master_Status;
+    Register_Control -> C2_Master_Status;
+    Long_Form_Output -> C2_Master_Status;
+
+    C2_Master_Status -> Native_Level_Listening;
+    C2_Master_Status -> Rhetorical_Mastership;
+    C2_Master_Status -> Translation_Ability;
+    Native_Level_Listening -> Symbolic_Capital_Spanish;
+    Rhetorical_Mastership -> Symbolic_Capital_Spanish;
+    Translation_Ability -> Symbolic_Capital_Spanish;
+
+    // SOCIAL CAPITAL BRANCH
+    Spanish_Social_Capital [
+        label="Spanish Social Capital Branch",
+        fillcolor="#d7ffd9"
+    ];
+
+    Language_Exchange [
+        label="Language Exchange Network\nSpanish Speakers + Tutors"
+    ];
+
+    Hispanic_Communities [
+        label="Hispanic Communities\nOnline + Local + Professional"
+    ];
+
+    Dating_Social_Optionality [
+        label="Dating/Social Optionality\nMore Social Markets Open"
+    ];
+
+    International_Network [
+        label="International Network\nSpain, LatAm, US Hispanic World"
+    ];
+
+    B1_Independence -> Spanish_Social_Capital;
+    Spanish_Social_Capital -> Language_Exchange;
+    Language_Exchange -> Hispanic_Communities;
+    Hispanic_Communities -> Dating_Social_Optionality;
+    Hispanic_Communities -> International_Network;
+
+    // ECONOMIC CAPITAL BRANCH
+    Spanish_Economic_Capital [
+        label="Spanish Economic Capital Branch",
+        fillcolor="#d7ffe8"
+    ];
+
+    Job_Market_Expansion [
+        label="Job Market Expansion\nUS, EU, LatAm, Remote Roles"
+    ];
+
+    Business_Spanish [
+        label="Business Spanish\nSales, Negotiation, Client Support"
+    ];
+
+    Content_Market [
+        label="Content Market Access\nSpanish Audience + Products"
+    ];
+
+    B2_Functional_Fluency -> Spanish_Economic_Capital;
+    Spanish_Economic_Capital -> Job_Market_Expansion;
+    Spanish_Economic_Capital -> Business_Spanish;
+    Business_Spanish -> Content_Market;
+
+    // CULTURAL CAPITAL BRANCH
+    Spanish_Cultural_Capital [
+        label="Spanish Cultural Capital Branch",
+        fillcolor="#fff0c2"
+    ];
+
+    Canonical_Books [
+        label="Canonical Books\nDon Quixote, Borges, Márquez, Lorca"
+    ];
+
+    Civilizational_Map [
+        label="Civilizational Map\nSpain, Mexico, Argentina, Colombia, Chile"
+    ];
+
+    Art_Music_Film [
+        label="Art, Music, Film\nFlamenco, Reggaetón, Cinema, Painting"
+    ];
+
+    C1_Cultural_Integration -> Spanish_Cultural_Capital;
+    Spanish_Cultural_Capital -> Canonical_Books;
+    Spanish_Cultural_Capital -> Civilizational_Map;
+    Spanish_Cultural_Capital -> Art_Music_Film;
+
+    // EXAM / CERTIFICATION BRANCH
+    Certification_Branch [
+        label="Certification Branch\nDELE / SIELE / Formal Proof",
+        fillcolor="#ffd6d6"
+    ];
+
+    DELE_B1 [
+        label="DELE B1\nOptional First Certification"
+    ];
+
+    DELE_B2 [
+        label="DELE B2\nFunctional Proof for Work/Study"
+    ];
+
+    DELE_C1 [
+        label="DELE C1\nHigh Cultural and Professional Signal"
+    ];
+
+    DELE_C2 [
+        label="DELE C2\nElite Linguistic Signal"
+    ];
+
+    B1_Independence -> Certification_Branch;
+    Certification_Branch -> DELE_B1;
+    B2_Functional_Fluency -> DELE_B2;
+    C1_Cultural_Integration -> DELE_C1;
+    C2_Master_Status -> DELE_C2;
+
+    DELE_B2 -> Job_Market_Expansion;
+    DELE_C1 -> Symbolic_Capital_Spanish;
+    DELE_C2 -> Symbolic_Capital_Spanish;
+
+    // FINAL GRAND PLAN INTEGRATION
+    Grand_Plan_Integration [
+        label="Grand Plan Integration\nSpanish as Capital Multiplier",
+        fillcolor="#f2b84b",
+        penwidth=2.5
+    ];
+
+    Symbolic_Capital_Spanish -> Grand_Plan_Integration;
+    International_Network -> Grand_Plan_Integration;
+    Job_Market_Expansion -> Grand_Plan_Integration;
+    Spanish_Cultural_Capital -> Grand_Plan_Integration;
+}
